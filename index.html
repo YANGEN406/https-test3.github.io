@@ -1,0 +1,4205 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="《心理年龄测试》——30 道情境题，探索你的内在年龄、心理韧性与成长方向。"
+    />
+    <meta name="theme-color" content="#f3efe7" />
+    <title>心理年龄测试 · Inner Age Test</title>
+    <style>
+:root {
+  --paper: #f3efe7;
+  --paper-light: #faf8f3;
+  --paper-deep: #e9e2d7;
+  --ink: #1f2926;
+  --ink-soft: #39433f;
+  --muted: #72766f;
+  --line: rgba(31, 41, 38, 0.14);
+  --line-strong: rgba(31, 41, 38, 0.24);
+  --accent: #bb674f;
+  --accent-deep: #9d4f3b;
+  --sage: #9ba991;
+  --sage-deep: #697c68;
+  --card: rgba(250, 248, 243, 0.76);
+  --serif: "Iowan Old Style", "Baskerville", "Songti SC", "STSong", "Noto Serif SC", Georgia, serif;
+  --sans: "Avenir Next", "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    sans-serif;
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 30px;
+  --shadow: 0 24px 80px rgba(43, 44, 36, 0.1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 10% 8%, rgba(198, 179, 151, 0.23), transparent 31rem),
+    radial-gradient(circle at 92% 56%, rgba(144, 164, 137, 0.16), transparent 36rem),
+    var(--paper);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  color: inherit;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.is-hidden {
+  display: none !important;
+}
+
+.ambient {
+  position: fixed;
+  z-index: -2;
+  border-radius: 999px;
+  pointer-events: none;
+  filter: blur(2px);
+}
+
+.ambient-one {
+  top: -18vw;
+  right: -10vw;
+  width: 44vw;
+  height: 44vw;
+  border: 1px solid rgba(31, 41, 38, 0.06);
+  box-shadow:
+    inset 0 0 0 7vw rgba(255, 255, 255, 0.15),
+    inset 0 0 0 12vw rgba(31, 41, 38, 0.018);
+}
+
+.ambient-two {
+  bottom: -25vw;
+  left: -18vw;
+  width: 50vw;
+  height: 50vw;
+  background: rgba(180, 166, 137, 0.08);
+  border: 1px solid rgba(31, 41, 38, 0.04);
+}
+
+.grain {
+  position: fixed;
+  z-index: 10;
+  inset: 0;
+  opacity: 0.026;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+}
+
+.site-header {
+  position: relative;
+  z-index: 20;
+  display: flex;
+  width: min(100%, 1320px);
+  margin: 0 auto;
+  padding: 26px 42px 12px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-mark {
+  position: relative;
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border: 1px solid var(--ink);
+  border-radius: 50%;
+}
+
+.brand-mark::before,
+.brand-mark::after {
+  position: absolute;
+  content: "";
+  border: 1px solid rgba(31, 41, 38, 0.23);
+  border-radius: 50%;
+}
+
+.brand-mark::before {
+  width: 43px;
+  height: 15px;
+  transform: rotate(-28deg);
+}
+
+.brand-mark::after {
+  width: 15px;
+  height: 43px;
+  transform: rotate(28deg);
+}
+
+.brand-mark span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.brand-type {
+  display: grid;
+  gap: 2px;
+}
+
+.brand-type strong {
+  font-family: var(--serif);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+}
+
+.brand-type small {
+  color: var(--muted);
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+}
+
+.language-switch {
+  display: flex;
+  height: 38px;
+  padding: 4px;
+  align-items: center;
+  gap: 2px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(250, 248, 243, 0.58);
+  backdrop-filter: blur(10px);
+}
+
+.language-option {
+  min-width: 42px;
+  height: 28px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 999px;
+  color: var(--muted);
+  background: transparent;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition:
+    color 180ms ease,
+    background-color 180ms ease;
+}
+
+.language-option.is-active {
+  color: var(--paper-light);
+  background: var(--ink);
+}
+
+.language-divider {
+  width: 1px;
+  height: 13px;
+  opacity: 0.45;
+  background: var(--line-strong);
+}
+
+main {
+  position: relative;
+  z-index: 2;
+}
+
+.view {
+  width: 100%;
+}
+
+.intro-view {
+  display: flex;
+  min-height: calc(100vh - 86px);
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hero-grid {
+  display: grid;
+  width: min(100%, 1320px);
+  margin: 0 auto;
+  padding: 68px 42px 44px;
+  align-items: center;
+  grid-template-columns: minmax(0, 1.12fr) minmax(370px, 0.88fr);
+  gap: clamp(46px, 7vw, 118px);
+}
+
+.hero-copy {
+  position: relative;
+  animation: reveal-up 700ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.eyebrow {
+  display: flex;
+  margin: 0 0 24px;
+  align-items: center;
+  gap: 12px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.eyebrow-line {
+  width: 34px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.hero-title {
+  max-width: 760px;
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(74px, 8.7vw, 138px);
+  font-weight: 500;
+  letter-spacing: -0.065em;
+  line-height: 0.9;
+}
+
+.hero-title span,
+.hero-title em {
+  display: block;
+}
+
+.hero-title em {
+  margin-top: 0.19em;
+  padding-left: 0.14em;
+  color: var(--accent-deep);
+  font-size: 0.48em;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.42em;
+  line-height: 1;
+}
+
+.hero-title em::after {
+  display: inline-block;
+  width: clamp(80px, 12vw, 180px);
+  height: 1px;
+  margin-left: 0.5em;
+  vertical-align: 0.42em;
+  content: "";
+  background: rgba(157, 79, 59, 0.38);
+}
+
+.hero-lede {
+  max-width: 590px;
+  margin: 38px 0 42px;
+  color: var(--ink-soft);
+  font-size: 16px;
+  letter-spacing: 0.015em;
+  line-height: 1.95;
+}
+
+.hero-facts {
+  display: flex;
+  max-width: 590px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+.hero-facts > div {
+  display: grid;
+  flex: 1;
+  gap: 4px;
+}
+
+.hero-facts strong {
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.hero-facts span {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+
+.start-area {
+  position: relative;
+  display: grid;
+  min-height: 520px;
+  place-items: center;
+}
+
+.orbit-art {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(38vw, 470px);
+  aspect-ratio: 1;
+  transform: translate(-49%, -53%);
+  pointer-events: none;
+  animation: reveal-fade 1s 180ms both;
+}
+
+.orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: 1px solid rgba(31, 41, 38, 0.17);
+  border-radius: 50%;
+}
+
+.orbit-a {
+  width: 100%;
+  height: 41%;
+  transform: translate(-50%, -50%) rotate(-35deg);
+}
+
+.orbit-b {
+  width: 62%;
+  height: 100%;
+  border-color: rgba(187, 103, 79, 0.21);
+  transform: translate(-50%, -50%) rotate(35deg);
+}
+
+.orbit-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 28%;
+  height: 28%;
+  border: 1px solid rgba(31, 41, 38, 0.08);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(250, 248, 243, 0.97), rgba(250, 248, 243, 0.1));
+  box-shadow: 0 0 60px rgba(250, 248, 243, 0.85);
+  transform: translate(-50%, -50%);
+}
+
+.orbit-note {
+  position: absolute;
+  top: 3%;
+  right: 8%;
+  color: var(--muted);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  line-height: 1.6;
+  transform: rotate(90deg);
+}
+
+.start-card {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 410px);
+  padding: 28px 30px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.74);
+  border-radius: var(--radius-lg);
+  background: var(--card);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(24px);
+  animation: reveal-up 700ms 140ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.start-card-meta {
+  display: flex;
+  margin-bottom: 42px;
+  justify-content: space-between;
+  color: var(--muted);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.age-label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--ink-soft);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+}
+
+.age-input-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  border-bottom: 1px solid var(--line-strong);
+  transition: border-color 180ms ease;
+}
+
+.age-input-wrap:focus-within {
+  border-color: var(--ink);
+}
+
+.age-input-wrap.has-error {
+  border-color: var(--accent-deep);
+}
+
+.age-input-wrap input {
+  width: 132px;
+  padding: 7px 0 10px;
+  border: 0;
+  outline: 0 !important;
+  color: var(--ink);
+  background: transparent;
+  font-family: var(--serif);
+  font-size: 64px;
+  font-weight: 400;
+  letter-spacing: -0.06em;
+  line-height: 1;
+  appearance: textfield;
+}
+
+.age-input-wrap input::-webkit-inner-spin-button,
+.age-input-wrap input::-webkit-outer-spin-button {
+  margin: 0;
+  appearance: none;
+}
+
+.age-input-wrap input::placeholder {
+  color: rgba(31, 41, 38, 0.19);
+}
+
+.age-input-wrap span {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.age-hint,
+.field-error {
+  min-height: 18px;
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 0.03em;
+  line-height: 1.6;
+}
+
+.field-error {
+  color: var(--accent-deep);
+}
+
+.primary-button,
+.outline-button {
+  display: inline-flex;
+  min-height: 54px;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition:
+    transform 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease;
+}
+
+.primary-button {
+  width: 100%;
+  margin-top: 24px;
+  padding: 0 22px;
+  border: 1px solid var(--ink);
+  color: var(--paper-light);
+  background: var(--ink);
+}
+
+.primary-button svg,
+.quiet-button svg,
+.share-button svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.5;
+}
+
+.primary-button svg {
+  margin-left: auto;
+  transition: transform 180ms ease;
+}
+
+.local-note {
+  display: flex;
+  margin: 16px 0 0;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.privacy-dot {
+  flex: 0 0 auto;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--sage-deep);
+}
+
+.intro-footer {
+  display: flex;
+  width: min(100%, 1320px);
+  margin: 0 auto;
+  padding: 20px 42px 28px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  border-top: 1px solid var(--line);
+}
+
+.intro-footer p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 0.03em;
+  line-height: 1.6;
+}
+
+.footer-mark {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  white-space: nowrap;
+}
+
+.footer-mark span:first-child {
+  width: 23px;
+  height: 1px;
+  background: var(--line-strong);
+}
+
+/* Test */
+
+.test-view {
+  display: flex;
+  min-height: calc(100vh - 86px);
+  padding: 34px 32px 64px;
+  align-items: center;
+  justify-content: center;
+}
+
+.test-shell {
+  width: min(100%, 920px);
+}
+
+.test-topbar {
+  display: flex;
+  margin-bottom: 18px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.quiet-button {
+  display: inline-flex;
+  min-height: 42px;
+  padding: 0;
+  align-items: center;
+  gap: 8px;
+  border: 0;
+  color: var(--muted);
+  background: transparent;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+}
+
+.quiet-button svg {
+  width: 17px;
+  height: 17px;
+}
+
+.quiet-button:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.question-counter {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  font-family: var(--serif);
+  font-size: 17px;
+}
+
+.question-counter span:not(#questionNumber) {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.counter-divider {
+  opacity: 0.55;
+}
+
+.progress-block {
+  display: flex;
+  margin-bottom: 30px;
+  align-items: center;
+  gap: 14px;
+}
+
+.progress-track {
+  position: relative;
+  height: 2px;
+  flex: 1;
+  overflow: hidden;
+  background: var(--line);
+}
+
+.progress-fill {
+  display: block;
+  width: 0;
+  height: 100%;
+  background: var(--accent);
+  transition: width 350ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.progress-label {
+  width: 34px;
+  color: var(--muted);
+  font-size: 9px;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.question-stage {
+  min-height: 590px;
+  padding: clamp(34px, 5.4vw, 68px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: var(--radius-lg);
+  background: rgba(250, 248, 243, 0.67);
+  box-shadow: 0 20px 80px rgba(43, 44, 36, 0.07);
+  backdrop-filter: blur(20px);
+}
+
+.question-stage.is-entering {
+  animation: question-in 320ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.question-heading {
+  max-width: 760px;
+}
+
+.question-tag {
+  display: flex;
+  margin-bottom: 24px;
+  align-items: center;
+  gap: 10px;
+  color: var(--accent-deep);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+
+.question-tag span:last-child {
+  color: var(--muted);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+}
+
+.tag-dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--line-strong);
+}
+
+#questionText {
+  min-height: 2.7em;
+  margin: 0 0 clamp(28px, 4vw, 46px);
+  font-family: var(--serif);
+  font-size: clamp(28px, 4vw, 43px);
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1.35;
+}
+
+.option-list {
+  display: grid;
+  gap: 10px;
+}
+
+.option-button {
+  display: grid;
+  width: 100%;
+  min-height: 64px;
+  padding: 12px 19px;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  color: var(--ink-soft);
+  background: rgba(255, 255, 255, 0.37);
+  font-size: 14px;
+  line-height: 1.6;
+  text-align: left;
+  cursor: pointer;
+  grid-template-columns: 41px 1fr 24px;
+  transition:
+    color 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease,
+    transform 180ms ease;
+}
+
+.option-letter {
+  display: grid;
+  width: 27px;
+  height: 27px;
+  place-items: center;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  color: var(--muted);
+  font-family: var(--serif);
+  font-size: 11px;
+  transition:
+    color 180ms ease,
+    border-color 180ms ease;
+}
+
+.option-check {
+  display: grid;
+  width: 20px;
+  height: 20px;
+  opacity: 0;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--paper-light);
+  transform: scale(0.7);
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.option-check::after {
+  width: 7px;
+  height: 4px;
+  border-bottom: 1.5px solid var(--ink);
+  border-left: 1.5px solid var(--ink);
+  content: "";
+  transform: rotate(-45deg) translate(1px, -1px);
+}
+
+.option-button.is-selected {
+  color: var(--paper-light);
+  border-color: var(--ink);
+  background: var(--ink);
+  transform: translateY(-1px);
+}
+
+.option-button.is-selected .option-letter {
+  color: var(--paper-light);
+  border-color: rgba(255, 255, 255, 0.36);
+}
+
+.option-button.is-selected .option-check {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.option-button:disabled {
+  cursor: default;
+}
+
+.question-footer {
+  display: flex;
+  min-height: 50px;
+  margin-top: 28px;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--line);
+}
+
+.question-footer p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: 0.04em;
+  text-align: right;
+}
+
+.previous-button svg {
+  transform: rotate(0deg);
+}
+
+/* Result */
+
+.result-view {
+  padding: 54px 36px 70px;
+}
+
+.result-shell {
+  width: min(100%, 1160px);
+  margin: 0 auto;
+}
+
+.result-hero {
+  display: grid;
+  align-items: end;
+  grid-template-columns: minmax(0, 1fr) 230px;
+  gap: 50px;
+  animation: reveal-up 650ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.result-heading-block .eyebrow {
+  margin-bottom: 18px;
+}
+
+#resultHeading {
+  margin: 0 0 14px;
+  color: var(--ink-soft);
+  font-family: var(--serif);
+  font-size: clamp(24px, 3vw, 34px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.mental-age-line {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mental-age-number {
+  font-family: var(--serif);
+  font-size: clamp(100px, 16vw, 188px);
+  font-weight: 400;
+  letter-spacing: -0.085em;
+  line-height: 0.9;
+}
+
+.mental-age-unit {
+  align-self: flex-end;
+  margin-bottom: 0.13em;
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.archetype-pill {
+  align-self: center;
+  margin-left: 10px;
+  padding: 8px 13px;
+  border: 1px solid rgba(187, 103, 79, 0.26);
+  border-radius: 999px;
+  color: var(--accent-deep);
+  background: rgba(187, 103, 79, 0.06);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+.difference-card {
+  position: relative;
+  min-height: 214px;
+  padding: 24px;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  color: var(--paper-light);
+  background: var(--ink);
+}
+
+.difference-card::after {
+  position: absolute;
+  right: -30px;
+  bottom: -54px;
+  width: 140px;
+  height: 140px;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 50%;
+  box-shadow: 0 0 0 25px rgba(255, 255, 255, 0.035);
+  content: "";
+}
+
+.difference-card > span {
+  display: block;
+  color: rgba(250, 248, 243, 0.54);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.11em;
+}
+
+.difference-card strong {
+  display: block;
+  margin-top: 20px;
+  color: var(--paper-light);
+  font-family: var(--serif);
+  font-size: 50px;
+  font-weight: 400;
+  letter-spacing: -0.05em;
+}
+
+.difference-card p {
+  max-width: 140px;
+  margin: 12px 0 0;
+  color: rgba(250, 248, 243, 0.68);
+  font-size: 10px;
+  line-height: 1.6;
+}
+
+.result-summary {
+  max-width: 820px;
+  margin: 38px 0 38px;
+  color: var(--ink-soft);
+  font-family: var(--serif);
+  font-size: clamp(18px, 2.2vw, 23px);
+  letter-spacing: 0.008em;
+  line-height: 1.8;
+}
+
+.age-spectrum-card {
+  padding: 28px 32px 34px;
+  border: 1px solid rgba(255, 255, 255, 0.78);
+  border-radius: var(--radius-md);
+  background: rgba(250, 248, 243, 0.7);
+}
+
+.spectrum-header {
+  display: grid;
+  align-items: end;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 30px;
+}
+
+.spectrum-header > div:first-child,
+.spectrum-age-right {
+  display: grid;
+  gap: 5px;
+}
+
+.spectrum-age-right {
+  text-align: right;
+}
+
+.section-kicker {
+  color: var(--accent-deep);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.spectrum-header strong {
+  font-family: var(--serif);
+  font-size: 27px;
+  font-weight: 500;
+}
+
+.spectrum-legend {
+  display: flex;
+  padding-bottom: 7px;
+  gap: 18px;
+  color: var(--muted);
+  font-size: 9px;
+}
+
+.spectrum-legend > span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.legend-dot.actual {
+  border: 1px solid var(--sage-deep);
+  background: transparent;
+}
+
+.legend-dot.mental {
+  background: var(--accent);
+}
+
+.age-spectrum {
+  position: relative;
+  height: 104px;
+  margin: 36px 3px 0;
+}
+
+.spectrum-track {
+  position: absolute;
+  top: 22px;
+  right: 0;
+  left: 0;
+  height: 1px;
+  background: var(--line-strong);
+}
+
+.spectrum-ticks {
+  position: absolute;
+  top: 56px;
+  right: 0;
+  left: 0;
+  height: 32px;
+}
+
+.spectrum-tick {
+  position: absolute;
+  top: 0;
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 8px;
+  transform: translateX(-50%);
+}
+
+.spectrum-tick::before {
+  width: 1px;
+  height: 7px;
+  content: "";
+  background: var(--line-strong);
+}
+
+.spectrum-marker {
+  position: absolute;
+  top: 22px;
+  z-index: 2;
+  width: 0;
+  height: 0;
+  transform: translateX(-50%);
+  transition: left 900ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.marker-dot {
+  position: absolute;
+  top: 0;
+  left: var(--dot-shift, 0);
+  display: block;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.spectrum-marker.actual .marker-dot {
+  width: 17px;
+  height: 17px;
+  border: 4px solid var(--paper-light);
+  background: var(--sage-deep);
+  box-shadow: 0 0 0 1px var(--sage-deep);
+}
+
+.spectrum-marker.mental .marker-dot {
+  width: 19px;
+  height: 19px;
+  border: 4px solid var(--paper-light);
+  background: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+.marker-caption {
+  position: absolute;
+  top: 17px;
+  left: 0;
+  margin: 0;
+  padding: 3px 6px;
+  border-radius: 4px;
+  color: var(--muted);
+  background: var(--paper-light);
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  transform: translateX(calc(-50% + var(--caption-shift, 0px)));
+}
+
+.spectrum-marker.actual .marker-caption {
+  top: auto;
+  bottom: 17px;
+  color: var(--sage-deep);
+}
+
+.spectrum-marker.mental .marker-caption {
+  color: var(--accent-deep);
+}
+
+.share-panel {
+  position: relative;
+  display: grid;
+  margin-top: 18px;
+  padding: 34px 36px 32px;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  color: var(--paper-light);
+  background:
+    radial-gradient(circle at 86% 10%, rgba(187, 103, 79, 0.34), transparent 20rem),
+    var(--ink);
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 22px 40px;
+}
+
+.share-panel::after {
+  position: absolute;
+  top: -90px;
+  right: 18%;
+  width: 220px;
+  height: 220px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+  content: "";
+}
+
+.share-panel .section-kicker {
+  color: rgba(250, 248, 243, 0.5);
+}
+
+.share-copy h3 {
+  margin: 8px 0 7px;
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 400;
+}
+
+.share-copy p {
+  max-width: 520px;
+  margin: 0;
+  color: rgba(250, 248, 243, 0.58);
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.share-actions {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.share-actions .primary-button {
+  width: auto;
+  min-width: 138px;
+  margin: 0;
+  border-color: var(--paper-light);
+  color: var(--ink);
+  background: var(--paper-light);
+}
+
+.share-actions .primary-button svg {
+  margin: 0;
+}
+
+.outline-button {
+  min-height: 54px;
+  padding: 0 20px;
+  border: 1px solid rgba(250, 248, 243, 0.22);
+  color: var(--paper-light);
+  background: transparent;
+}
+
+.outline-button:hover {
+  border-color: rgba(250, 248, 243, 0.6);
+}
+
+.share-link-label {
+  position: relative;
+  z-index: 1;
+  display: block;
+  align-self: end;
+  color: rgba(250, 248, 243, 0.45);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+
+.share-link-row {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  padding: 4px 4px 4px 14px;
+  align-items: center;
+  border: 1px solid rgba(250, 248, 243, 0.13);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.045);
+  grid-column: 1 / -1;
+}
+
+.share-link-row input {
+  min-width: 0;
+  height: 34px;
+  flex: 1;
+  border: 0;
+  outline: 0;
+  color: rgba(250, 248, 243, 0.66);
+  background: transparent;
+  font-size: 10px;
+  letter-spacing: 0.01em;
+}
+
+.share-link-row button {
+  min-width: 64px;
+  height: 34px;
+  border: 0;
+  border-radius: 7px;
+  color: var(--ink);
+  background: rgba(250, 248, 243, 0.9);
+  font-size: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.analysis-section,
+.insight-section {
+  padding-top: 94px;
+}
+
+.section-heading {
+  display: grid;
+  margin-bottom: 30px;
+  align-items: end;
+  grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+  gap: 50px;
+}
+
+.section-heading.compact {
+  display: block;
+}
+
+.section-heading h3 {
+  margin: 9px 0 0;
+  font-family: var(--serif);
+  font-size: clamp(30px, 4.2vw, 48px);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  line-height: 1.2;
+}
+
+.section-heading > p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.9;
+}
+
+.dimension-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.dimension-card {
+  min-height: 235px;
+  padding: 25px 27px 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: rgba(250, 248, 243, 0.48);
+}
+
+.dimension-card:first-child {
+  grid-row: span 2;
+  min-height: 100%;
+  padding: 31px;
+  color: var(--paper-light);
+  background:
+    radial-gradient(circle at 100% 0%, rgba(187, 103, 79, 0.38), transparent 18rem),
+    var(--ink);
+}
+
+.dimension-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.dimension-index {
+  color: var(--muted);
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+
+.dimension-card:first-child .dimension-index {
+  color: rgba(250, 248, 243, 0.35);
+}
+
+.dimension-score {
+  font-family: var(--serif);
+  font-size: 35px;
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.dimension-score small {
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 9px;
+  letter-spacing: 0;
+}
+
+.dimension-card:first-child .dimension-score small {
+  color: rgba(250, 248, 243, 0.38);
+}
+
+.dimension-card h4 {
+  margin: 34px 0 6px;
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.dimension-level {
+  color: var(--accent-deep);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+}
+
+.dimension-card:first-child .dimension-level {
+  color: #d98b72;
+}
+
+.dimension-card p {
+  margin: 15px 0 24px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.8;
+}
+
+.dimension-card:first-child p {
+  color: rgba(250, 248, 243, 0.58);
+}
+
+.dimension-track {
+  height: 2px;
+  overflow: hidden;
+  background: var(--line);
+}
+
+.dimension-card:first-child .dimension-track {
+  background: rgba(250, 248, 243, 0.14);
+}
+
+.dimension-fill {
+  display: block;
+  width: 0;
+  height: 100%;
+  background: var(--accent);
+  transition: width 1s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.dimension-card:first-child .dimension-fill {
+  background: #df927b;
+}
+
+.insight-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.insight-card {
+  min-height: 270px;
+  padding: 27px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: rgba(250, 248, 243, 0.56);
+}
+
+.insight-card:nth-child(2) {
+  background: rgba(219, 225, 212, 0.47);
+}
+
+.insight-number {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  color: var(--muted);
+  font-family: var(--serif);
+  font-size: 11px;
+}
+
+.insight-card h4 {
+  margin: 40px 0 13px;
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.insight-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.9;
+}
+
+.reflection-card {
+  position: relative;
+  display: grid;
+  margin-top: 44px;
+  padding: 46px 54px 44px;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background:
+    radial-gradient(circle at 100% 50%, rgba(155, 169, 145, 0.35), transparent 21rem),
+    #dfe4d9;
+  grid-template-columns: 70px 1fr;
+  gap: 26px;
+}
+
+.quote-mark {
+  color: var(--sage-deep);
+  font-family: var(--serif);
+  font-size: 110px;
+  line-height: 0.75;
+  opacity: 0.35;
+}
+
+.reflection-question {
+  max-width: 840px;
+  margin: 12px 0 0;
+  font-family: var(--serif);
+  font-size: clamp(23px, 3.2vw, 36px);
+  letter-spacing: -0.02em;
+  line-height: 1.45;
+}
+
+.result-footer {
+  display: flex;
+  margin-top: 55px;
+  padding-top: 22px;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 40px;
+  border-top: 1px solid var(--line);
+}
+
+.result-footer p {
+  max-width: 660px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 9px;
+  line-height: 1.8;
+}
+
+.result-footer span {
+  color: var(--muted);
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  white-space: nowrap;
+}
+
+.toast {
+  position: fixed;
+  z-index: 50;
+  bottom: 26px;
+  left: 50%;
+  max-width: calc(100vw - 36px);
+  padding: 12px 18px;
+  border-radius: 999px;
+  color: var(--paper-light);
+  background: var(--ink);
+  box-shadow: 0 14px 40px rgba(31, 41, 38, 0.2);
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 12px);
+  transition:
+    opacity 220ms ease,
+    transform 220ms ease;
+}
+
+.toast.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .primary-button:hover {
+    background: var(--accent-deep);
+    border-color: var(--accent-deep);
+    transform: translateY(-2px);
+  }
+
+  .primary-button:hover svg {
+    transform: translateX(3px);
+  }
+
+  .outline-button:hover {
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .option-button:hover:not(:disabled) {
+    border-color: var(--line-strong);
+    background: rgba(255, 255, 255, 0.75);
+    transform: translateY(-1px);
+  }
+
+  .share-link-row button:hover {
+    background: #ffffff;
+  }
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes reveal-fade {
+  from {
+    opacity: 0;
+    transform: translate(-49%, -53%) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-49%, -53%) scale(1);
+  }
+}
+
+@keyframes question-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 1060px) {
+  .hero-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(360px, 0.8fr);
+    gap: 30px;
+  }
+
+  .hero-title {
+    font-size: clamp(66px, 9vw, 110px);
+  }
+
+  .start-area {
+    min-height: 470px;
+  }
+
+  .orbit-art {
+    width: min(42vw, 420px);
+  }
+
+  .start-card {
+    padding: 28px;
+  }
+}
+
+@media (max-width: 880px) {
+  .site-header {
+    padding: 22px 26px 10px;
+  }
+
+  .hero-grid {
+    padding: 58px 26px 46px;
+    grid-template-columns: 1fr;
+    gap: 54px;
+  }
+
+  .hero-copy {
+    max-width: 680px;
+  }
+
+  .hero-title {
+    font-size: clamp(70px, 14vw, 116px);
+  }
+
+  .hero-lede {
+    max-width: 620px;
+    margin: 32px 0 34px;
+  }
+
+  .start-area {
+    width: min(100%, 560px);
+    min-height: auto;
+    margin-left: auto;
+    padding: 28px 0;
+  }
+
+  .orbit-art {
+    top: 50%;
+    width: 430px;
+  }
+
+  .start-card {
+    width: min(100%, 410px);
+    margin-left: auto;
+  }
+
+  .intro-footer {
+    padding-right: 26px;
+    padding-left: 26px;
+  }
+
+  .result-hero {
+    align-items: center;
+    grid-template-columns: minmax(0, 1fr) 200px;
+    gap: 24px;
+  }
+
+  .archetype-pill {
+    display: none;
+  }
+
+  .section-heading {
+    display: block;
+  }
+
+  .section-heading > p {
+    max-width: 650px;
+    margin-top: 17px;
+  }
+
+  .insight-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .insight-card {
+    min-height: auto;
+  }
+
+  .insight-card h4 {
+    margin-top: 28px;
+  }
+}
+
+@media (max-width: 640px) {
+  .site-header {
+    padding: 18px 18px 8px;
+  }
+
+  .brand-mark {
+    width: 30px;
+    height: 30px;
+  }
+
+  .brand-mark::before {
+    width: 38px;
+    height: 13px;
+  }
+
+  .brand-mark::after {
+    width: 13px;
+    height: 38px;
+  }
+
+  .brand-type strong {
+    font-size: 13px;
+  }
+
+  .brand-type small {
+    font-size: 7px;
+  }
+
+  .language-switch {
+    height: 36px;
+  }
+
+  .language-option {
+    min-width: 38px;
+    height: 26px;
+    padding: 0 8px;
+  }
+
+  .hero-grid {
+    padding: 42px 20px 34px;
+    gap: 36px;
+  }
+
+  .eyebrow {
+    margin-bottom: 18px;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+  }
+
+  .eyebrow-line {
+    width: 24px;
+  }
+
+  .hero-title {
+    max-width: 390px;
+    font-size: clamp(62px, 19vw, 92px);
+  }
+
+  .hero-title em {
+    padding-left: 0.08em;
+    font-size: 0.46em;
+    letter-spacing: 0.36em;
+  }
+
+  .hero-title em::after {
+    width: 54px;
+  }
+
+  .hero-lede {
+    margin: 28px 0 30px;
+    font-size: 13px;
+    line-height: 1.9;
+  }
+
+  .hero-facts {
+    padding-top: 18px;
+  }
+
+  .hero-facts strong {
+    font-size: 21px;
+  }
+
+  .hero-facts span {
+    font-size: 8px;
+    letter-spacing: 0.08em;
+  }
+
+  .start-area {
+    padding: 4px 0 18px;
+  }
+
+  .orbit-art {
+    top: 45%;
+    width: 330px;
+    opacity: 0.8;
+  }
+
+  .start-card {
+    width: 100%;
+    padding: 23px 22px 21px;
+    border-radius: 23px;
+  }
+
+  .start-card-meta {
+    margin-bottom: 35px;
+  }
+
+  .age-input-wrap input {
+    font-size: 58px;
+  }
+
+  .primary-button {
+    min-height: 52px;
+  }
+
+  .intro-footer {
+    padding: 18px 20px 24px;
+  }
+
+  .intro-footer p {
+    max-width: 250px;
+    font-size: 8px;
+  }
+
+  .footer-mark {
+    font-size: 7px;
+  }
+
+  .test-view {
+    min-height: calc(100vh - 74px);
+    padding: 20px 14px 36px;
+    align-items: flex-start;
+  }
+
+  .test-shell {
+    width: 100%;
+  }
+
+  .test-topbar {
+    padding: 0 6px;
+  }
+
+  .quiet-button {
+    font-size: 10px;
+  }
+
+  .progress-block {
+    margin-bottom: 18px;
+    padding: 0 6px;
+  }
+
+  .question-stage {
+    min-height: 590px;
+    padding: 29px 20px 20px;
+    border-radius: 24px;
+  }
+
+  .question-tag {
+    margin-bottom: 19px;
+    font-size: 9px;
+  }
+
+  #questionText {
+    min-height: 3.6em;
+    margin-bottom: 27px;
+    font-size: clamp(25px, 7vw, 33px);
+    line-height: 1.4;
+  }
+
+  .option-button {
+    min-height: 64px;
+    padding: 12px 14px;
+    font-size: 12px;
+    grid-template-columns: 36px 1fr 20px;
+  }
+
+  .option-letter {
+    width: 25px;
+    height: 25px;
+  }
+
+  .question-footer {
+    margin-top: 22px;
+  }
+
+  .question-footer p {
+    max-width: 150px;
+    font-size: 8px;
+  }
+
+  .result-view {
+    padding: 34px 16px 45px;
+  }
+
+  .result-hero {
+    grid-template-columns: minmax(0, 1fr) 103px;
+    align-items: end;
+    gap: 10px;
+  }
+
+  .result-heading-block .eyebrow {
+    margin-bottom: 12px;
+  }
+
+  #resultHeading {
+    margin-bottom: 10px;
+    font-size: 20px;
+  }
+
+  .mental-age-line {
+    gap: 6px;
+  }
+
+  .mental-age-number {
+    font-size: clamp(82px, 27vw, 124px);
+  }
+
+  .mental-age-unit {
+    margin-bottom: 0.22em;
+    font-size: 12px;
+  }
+
+  .difference-card {
+    min-height: 137px;
+    padding: 16px;
+    border-radius: 16px;
+  }
+
+  .difference-card > span {
+    font-size: 8px;
+    line-height: 1.5;
+  }
+
+  .difference-card strong {
+    margin-top: 13px;
+    font-size: 32px;
+  }
+
+  .difference-card p {
+    margin-top: 8px;
+    font-size: 8px;
+    line-height: 1.5;
+  }
+
+  .difference-card::after {
+    right: -40px;
+    bottom: -55px;
+    width: 100px;
+    height: 100px;
+  }
+
+  .result-summary {
+    margin: 26px 4px 28px;
+    font-size: 16px;
+    line-height: 1.8;
+  }
+
+  .age-spectrum-card {
+    padding: 22px 19px 27px;
+    border-radius: 18px;
+  }
+
+  .spectrum-header {
+    gap: 12px;
+  }
+
+  .spectrum-header strong {
+    font-size: 22px;
+  }
+
+  .spectrum-legend {
+    display: none;
+  }
+
+  .age-spectrum {
+    margin-top: 33px;
+  }
+
+  .spectrum-tick:nth-child(even) {
+    display: none;
+  }
+
+  .share-panel {
+    margin-top: 12px;
+    padding: 25px 20px 20px;
+    border-radius: 18px;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .share-copy h3 {
+    font-size: 23px;
+  }
+
+  .share-actions {
+    width: 100%;
+  }
+
+  .share-actions .primary-button,
+  .share-actions .outline-button {
+    min-width: 0;
+    min-height: 49px;
+    flex: 1;
+    padding: 0 13px;
+    font-size: 10px;
+  }
+
+  .share-link-label {
+    margin-bottom: -12px;
+  }
+
+  .share-link-row {
+    grid-column: 1;
+  }
+
+  .analysis-section,
+  .insight-section {
+    padding-top: 64px;
+  }
+
+  .section-heading {
+    margin-bottom: 22px;
+  }
+
+  .section-heading h3 {
+    font-size: 30px;
+  }
+
+  .section-heading > p {
+    font-size: 11px;
+  }
+
+  .dimension-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dimension-card,
+  .dimension-card:first-child {
+    min-height: 0;
+    padding: 23px;
+    grid-row: auto;
+  }
+
+  .dimension-card h4 {
+    margin-top: 25px;
+  }
+
+  .dimension-card p {
+    margin-bottom: 20px;
+  }
+
+  .insight-grid {
+    gap: 10px;
+  }
+
+  .insight-card {
+    padding: 23px;
+  }
+
+  .reflection-card {
+    margin-top: 28px;
+    padding: 31px 24px 29px;
+    grid-template-columns: 36px 1fr;
+    gap: 10px;
+  }
+
+  .quote-mark {
+    font-size: 72px;
+  }
+
+  .reflection-question {
+    font-size: 22px;
+  }
+
+  .result-footer {
+    display: block;
+    margin-top: 38px;
+  }
+
+  .result-footer p {
+    margin-bottom: 15px;
+  }
+}
+
+@media (max-width: 380px) {
+  .brand-type small {
+    display: none;
+  }
+
+  .hero-title {
+    font-size: 58px;
+  }
+
+  .result-hero {
+    grid-template-columns: minmax(0, 1fr) 92px;
+  }
+
+  .mental-age-number {
+    font-size: 76px;
+  }
+
+  .difference-card {
+    padding: 13px;
+  }
+
+  .difference-card strong {
+    font-size: 28px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+</style>
+  </head>
+  <body>
+    <div class="ambient ambient-one" aria-hidden="true"></div>
+    <div class="ambient ambient-two" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <a class="brand" href="#" id="brandHome" aria-label="返回首页">
+        <span class="brand-mark" aria-hidden="true">
+          <span></span>
+        </span>
+        <span class="brand-type">
+          <strong>内在刻度</strong>
+          <small>INNER SCALE</small>
+        </span>
+      </a>
+
+      <div class="language-switch" role="group" aria-label="语言选择 / Language">
+        <button class="language-option is-active" type="button" data-lang="zh" aria-pressed="true">
+          简
+        </button>
+        <span class="language-divider" aria-hidden="true"></span>
+        <button class="language-option" type="button" data-lang="en" aria-pressed="false">
+          EN
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="view intro-view" id="introView" aria-labelledby="heroTitle">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">
+              <span class="eyebrow-line" aria-hidden="true"></span>
+              <span data-i18n="heroEyebrow">一场关于内在时间的探索</span>
+            </p>
+
+            <h1 id="heroTitle" class="hero-title">
+              <span data-i18n="heroLineOne">心理年龄</span>
+              <em data-i18n="heroLineTwo">测试</em>
+            </h1>
+
+            <p class="hero-lede" data-i18n="heroLede">
+              年龄记录你走过的年头，心理年龄则映照你感受世界的方式。三十个日常片刻，遇见更清晰的自己。
+            </p>
+
+            <div class="hero-facts" aria-label="测试信息">
+              <div>
+                <strong>30</strong>
+                <span data-i18n="factQuestions">道情境题</span>
+              </div>
+              <div>
+                <strong>06</strong>
+                <span data-i18n="factMinutes">分钟完成</span>
+              </div>
+              <div>
+                <strong>100%</strong>
+                <span data-i18n="factPrivate">本机计算</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="start-area">
+            <div class="orbit-art" aria-hidden="true">
+              <span class="orbit orbit-a"></span>
+              <span class="orbit orbit-b"></span>
+              <span class="orbit-core"></span>
+              <span class="orbit-note">INNER<br />TIME</span>
+            </div>
+
+            <aside class="start-card" aria-labelledby="ageLabel">
+              <div class="start-card-meta">
+                <span data-i18n="beginHere">从这里开始</span>
+                <span>01—30</span>
+              </div>
+
+              <label class="age-label" id="ageLabel" for="actualAge" data-i18n="ageLabel">
+                你的实际年龄
+              </label>
+              <div class="age-input-wrap" id="ageInputWrap">
+                <input
+                  id="actualAge"
+                  name="actualAge"
+                  type="number"
+                  inputmode="numeric"
+                  min="8"
+                  max="99"
+                  placeholder="25"
+                  aria-describedby="ageHint ageError"
+                />
+                <span data-i18n="ageUnit">岁</span>
+              </div>
+              <p class="age-hint" id="ageHint" data-i18n="ageHint">
+                请输入 8–99 岁，用于与心理年龄进行对照
+              </p>
+              <p class="field-error" id="ageError" role="alert"></p>
+
+              <button class="primary-button" id="startButton" type="button">
+                <span data-i18n="startButton">开始探索</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M5 12h13M13 6l6 6-6 6" />
+                </svg>
+              </button>
+
+              <p class="local-note">
+                <span class="privacy-dot" aria-hidden="true"></span>
+                <span data-i18n="localNote">不收集、不上传，所有答案仅留在你的设备</span>
+              </p>
+            </aside>
+          </div>
+        </div>
+
+        <div class="intro-footer">
+          <p data-i18n="introDisclaimer">
+            本测试用于自我观察与对话，不构成医学诊断或心理治疗建议。
+          </p>
+          <div class="footer-mark" aria-hidden="true">
+            <span></span>
+            <span>EST. 2026</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="view test-view is-hidden" id="testView" aria-labelledby="questionText">
+        <div class="test-shell">
+          <div class="test-topbar">
+            <button class="quiet-button" id="exitButton" type="button">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M19 12H6M11 6l-6 6 6 6" />
+              </svg>
+              <span data-i18n="exitTest">退出测试</span>
+            </button>
+
+            <div class="question-counter" aria-live="polite">
+              <span id="questionNumber">01</span>
+              <span class="counter-divider">/</span>
+              <span>30</span>
+            </div>
+          </div>
+
+          <div class="progress-block">
+            <div
+              class="progress-track"
+              id="progressTrack"
+              role="progressbar"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-valuenow="0"
+            >
+              <span class="progress-fill" id="progressFill"></span>
+            </div>
+            <span class="progress-label" id="progressLabel">0%</span>
+          </div>
+
+          <div class="question-stage" id="questionStage">
+            <div class="question-heading">
+              <div class="question-tag">
+                <span id="dimensionLabel">好奇探索</span>
+                <span class="tag-dot" aria-hidden="true"></span>
+                <span data-i18n="instinctHint">跟随第一直觉</span>
+              </div>
+              <h2 id="questionText"></h2>
+            </div>
+
+            <div class="option-list" id="optionList" role="radiogroup" aria-labelledby="questionText"></div>
+
+            <div class="question-footer">
+              <button class="quiet-button previous-button" id="previousButton" type="button">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M19 12H6M11 6l-6 6 6 6" />
+                </svg>
+                <span data-i18n="previousQuestion">上一题</span>
+              </button>
+              <p data-i18n="noRightAnswer">没有标准答案，只有更接近你的选择</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="view result-view is-hidden" id="resultView" aria-labelledby="resultHeading">
+        <div class="result-shell">
+          <div class="result-hero">
+            <div class="result-heading-block">
+              <p class="eyebrow">
+                <span class="eyebrow-line" aria-hidden="true"></span>
+                <span data-i18n="resultEyebrow">你的内在画像</span>
+              </p>
+
+              <h2 id="resultHeading" data-i18n="resultHeading">你的心理年龄</h2>
+
+              <div class="mental-age-line">
+                <span class="mental-age-number" id="mentalAgeNumber">0</span>
+                <span class="mental-age-unit" data-i18n="ageUnit">岁</span>
+                <span class="archetype-pill" id="archetypePill"></span>
+              </div>
+            </div>
+
+            <div class="difference-card">
+              <span data-i18n="differenceLabel">与实际年龄的差值</span>
+              <strong id="differenceValue">+0</strong>
+              <p id="differenceDirection"></p>
+            </div>
+          </div>
+
+          <p class="result-summary" id="resultSummary"></p>
+
+          <div class="age-spectrum-card">
+            <div class="spectrum-header">
+              <div>
+                <span class="section-kicker" data-i18n="chronologicalAge">实际年龄</span>
+                <strong id="actualAgeValue">—</strong>
+              </div>
+              <div class="spectrum-legend" aria-hidden="true">
+                <span><i class="legend-dot actual"></i><span data-i18n="actualAgeShort">实际</span></span>
+                <span><i class="legend-dot mental"></i><span data-i18n="mentalAgeShort">心理</span></span>
+              </div>
+              <div class="spectrum-age-right">
+                <span class="section-kicker" data-i18n="mentalAgeLabel">心理年龄</span>
+                <strong id="mentalAgeValue">—</strong>
+              </div>
+            </div>
+
+            <div class="age-spectrum" id="ageSpectrum">
+              <div class="spectrum-track" aria-hidden="true"></div>
+              <div class="spectrum-marker actual" id="actualMarker">
+                <span class="marker-dot"></span>
+                <span class="marker-caption" data-i18n="actualAgeShort">实际</span>
+              </div>
+              <div class="spectrum-marker mental" id="mentalMarker">
+                <span class="marker-dot"></span>
+                <span class="marker-caption" data-i18n="mentalAgeShort">心理</span>
+              </div>
+              <div class="spectrum-ticks" id="spectrumTicks" aria-hidden="true"></div>
+            </div>
+          </div>
+
+          <div class="share-panel">
+            <div class="share-copy">
+              <span class="section-kicker" data-i18n="shareKicker">保留这一刻</span>
+              <h3 data-i18n="shareHeading">分享你的内在年龄</h3>
+              <p data-i18n="shareDescription">
+                链接包含本次答案与结果，打开后即可看到同一份画像。
+              </p>
+            </div>
+            <div class="share-actions">
+              <button class="primary-button share-button" id="shareButton" type="button">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="18" cy="5" r="2.5"></circle>
+                  <circle cx="6" cy="12" r="2.5"></circle>
+                  <circle cx="18" cy="19" r="2.5"></circle>
+                  <path d="m8.2 10.8 7.6-4.5M8.2 13.2l7.6 4.5"></path>
+                </svg>
+                <span data-i18n="shareButton">分享结果</span>
+              </button>
+              <button class="outline-button" id="restartButton" type="button">
+                <span data-i18n="retakeButton">重新测试</span>
+              </button>
+            </div>
+            <label class="share-link-label" for="shareUrl" data-i18n="shareLinkLabel">结果链接</label>
+            <div class="share-link-row">
+              <input id="shareUrl" type="text" readonly />
+              <button id="copyButton" type="button" data-i18n="copyButton">复制</button>
+            </div>
+          </div>
+
+          <div class="analysis-section">
+            <div class="section-heading">
+              <div>
+                <p class="section-kicker" data-i18n="portraitKicker">五维内在画像</p>
+                <h3 data-i18n="portraitHeading">你不是一个数字，而是一种组合</h3>
+              </div>
+              <p data-i18n="portraitDescription">
+                以下维度呈现你此刻更常使用的能力。高分不是更好，低分也不是缺陷，它们共同组成你的节奏。
+              </p>
+            </div>
+
+            <div class="dimension-grid" id="dimensionGrid"></div>
+          </div>
+
+          <div class="insight-section" id="insightSection">
+            <div class="section-heading compact">
+              <div>
+                <p class="section-kicker" data-i18n="insightKicker">深入解读</p>
+                <h3 data-i18n="insightHeading">把差异变成理解自己的线索</h3>
+              </div>
+            </div>
+            <div class="insight-grid" id="insightGrid"></div>
+          </div>
+
+          <div class="reflection-card">
+            <span class="quote-mark" aria-hidden="true">“</span>
+            <div>
+              <p class="section-kicker" data-i18n="reflectionKicker">留给自己的一个问题</p>
+              <p class="reflection-question" id="reflectionQuestion"></p>
+            </div>
+          </div>
+
+          <div class="result-footer">
+            <p data-i18n="resultDisclaimer">
+              心理年龄并非科学定论，而是一种帮助自我观察的表达方式。请把它当作一面镜子，而非标签。
+            </p>
+            <span>INNER SCALE · 2026</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script>
+(() => {
+  "use strict";
+
+  const TOTAL_QUESTIONS = 30;
+  const MIN_AGE = 8;
+  const MAX_AGE = 99;
+  const STORAGE_KEY = "inner-scale-language";
+
+  const copy = {
+    zh: {
+      pageTitle: "心理年龄测试 · 内在刻度",
+      heroEyebrow: "一场关于内在时间的探索",
+      heroLineOne: "心理年龄",
+      heroLineTwo: "测试",
+      heroLede:
+        "年龄记录你走过的年头，心理年龄则映照你感受世界的方式。三十个日常片刻，遇见更清晰的自己。",
+      factQuestions: "道情境题",
+      factMinutes: "分钟完成",
+      factPrivate: "本机计算",
+      beginHere: "从这里开始",
+      ageLabel: "你的实际年龄",
+      ageUnit: "岁",
+      ageHint: "请输入 8–99 岁，用于与心理年龄进行对照",
+      startButton: "开始探索",
+      localNote: "不收集、不上传，所有答案仅留在你的设备",
+      introDisclaimer: "本测试用于自我观察与对话，不构成医学诊断或心理治疗建议。",
+      exitTest: "退出测试",
+      instinctHint: "跟随第一直觉",
+      previousQuestion: "上一题",
+      noRightAnswer: "没有标准答案，只有更接近你的选择",
+      resultEyebrow: "你的内在画像",
+      resultHeading: "你的心理年龄",
+      differenceLabel: "与实际年龄的差值",
+      chronologicalAge: "实际年龄",
+      actualAgeShort: "实际",
+      mentalAgeShort: "心理",
+      mentalAgeLabel: "心理年龄",
+      shareKicker: "保留这一刻",
+      shareHeading: "分享你的内在年龄",
+      shareDescription: "链接包含本次答案与结果，打开后即可看到同一份画像。",
+      shareButton: "分享结果",
+      retakeButton: "重新测试",
+      shareLinkLabel: "结果链接",
+      copyButton: "复制",
+      portraitKicker: "五维内在画像",
+      portraitHeading: "你不是一个数字，而是一种组合",
+      portraitDescription: "以下维度呈现你此刻更常使用的能力。高分不是更好，低分也不是缺陷，它们共同组成你的节奏。",
+      insightKicker: "深入解读",
+      insightHeading: "把差异变成理解自己的线索",
+      reflectionKicker: "留给自己的一个问题",
+      resultDisclaimer:
+        "心理年龄并非科学定论，而是一种帮助自我观察的表达方式。请把它当作一面镜子，而非标签。",
+      requiredAge: "请先输入你的实际年龄",
+      invalidAge: "请输入 8–99 之间的实际年龄",
+      copied: "结果链接已复制",
+      copyFailed: "复制失败，请手动选择链接",
+      shareTitle: "我的心理年龄是 {age} 岁",
+      shareText: "我在《心理年龄测试》中的结果是心理年龄 {mental} 岁，与实际年龄相差 {diff} 岁。",
+      years: "岁",
+      yearUnit: "岁",
+      stronger: "比实际年龄成熟 {n} 岁",
+      younger: "比实际年龄年轻 {n} 岁",
+      sameAge: "与实际年龄几乎同频",
+      moreMature: "心理节奏更成熟",
+      moreLight: "内在节奏更轻盈",
+      inTune: "内在节奏与实际年龄相近",
+      yearsUnitShort: "岁",
+      traitStrengthTitle: "你正在使用的力量",
+      gentleEdgeTitle: "值得温柔看见的一面",
+      nextStepTitle: "让内在节奏更舒展",
+      dimensionAria: "{name}得分 {score} 分，{level}",
+    },
+    en: {
+      pageTitle: "Inner Age Test · Inner Scale",
+      heroEyebrow: "An exploration of your inner time",
+      heroLineOne: "Inner age",
+      heroLineTwo: "test",
+      heroLede:
+        "Chronological age counts the years you have lived. Inner age reveals how you meet the world. Thirty everyday moments, and a clearer portrait of yourself.",
+      factQuestions: "situations",
+      factMinutes: "minutes",
+      factPrivate: "on-device",
+      beginHere: "Begin here",
+      ageLabel: "Your actual age",
+      ageUnit: "yrs",
+      ageHint: "Enter an age from 8–99 to compare with your inner age",
+      startButton: "Begin the journey",
+      localNote: "No collection or upload. Your answers stay on this device.",
+      introDisclaimer: "This experience is for self-reflection, not medical diagnosis or mental health treatment.",
+      exitTest: "Exit test",
+      instinctHint: "Follow your first instinct",
+      previousQuestion: "Previous",
+      noRightAnswer: "There are no right answers, only what feels closer to you",
+      resultEyebrow: "Your inner portrait",
+      resultHeading: "Your inner age",
+      differenceLabel: "Difference from actual age",
+      chronologicalAge: "Actual age",
+      actualAgeShort: "Actual",
+      mentalAgeShort: "Inner",
+      mentalAgeLabel: "Inner age",
+      shareKicker: "Keep this moment",
+      shareHeading: "Share your inner age",
+      shareDescription: "The link contains your answers and result, so it opens the same portrait.",
+      shareButton: "Share result",
+      retakeButton: "Take it again",
+      shareLinkLabel: "Result link",
+      copyButton: "Copy",
+      portraitKicker: "Five-dimensional portrait",
+      portraitHeading: "You are not a number, but a combination",
+      portraitDescription:
+        "These dimensions show the capacities you lean on most right now. High is not better, and low is not a flaw. Together, they form your rhythm.",
+      insightKicker: "Deeper reading",
+      insightHeading: "Turn the difference into a clue about yourself",
+      reflectionKicker: "A question to keep",
+      resultDisclaimer:
+        "Inner age is not a scientific verdict. It is a language for self-observation. Treat it as a mirror, not a label.",
+      requiredAge: "Please enter your actual age first",
+      invalidAge: "Please enter an actual age from 8–99",
+      copied: "Result link copied",
+      copyFailed: "Copy failed. Please select the link manually.",
+      shareTitle: "My inner age is {age}",
+      shareText: "My Inner Age Test result is {mental}, a {diff}-year difference from my actual age.",
+      years: "yrs",
+      yearUnit: "yrs",
+      stronger: "{n} years more mature than your actual age",
+      younger: "{n} years younger than your actual age",
+      sameAge: "Almost in tune with your actual age",
+      moreMature: "A more mature inner rhythm",
+      moreLight: "A lighter inner rhythm",
+      inTune: "An inner rhythm close to your actual age",
+      yearsUnitShort: "yrs",
+      traitStrengthTitle: "The strength you are using",
+      gentleEdgeTitle: "A side worth meeting gently",
+      nextStepTitle: "A more spacious inner rhythm",
+      dimensionAria: "{name}: {score} points, {level}",
+    },
+  };
+
+  const questionData = [
+    {
+      dimension: "curiosity",
+      scores: [4, 3, 2, 1],
+      zh: {
+        prompt: "面对一个完全陌生的领域，你通常会……",
+        options: [
+          "先动手试试，边做边理解它的规则",
+          "找一份靠谱的入门指南，再开始体验",
+          "先看看别人怎么评价，确定值得再投入",
+          "通常不会主动接触，除非确实需要",
+        ],
+      },
+      en: {
+        prompt: "When you encounter a completely unfamiliar field, you usually…",
+        options: [
+          "Try it first and learn the rules as you go",
+          "Find a reliable beginner's guide, then start",
+          "See what others think before deciding it is worth it",
+          "Avoid it unless there is a real need",
+        ],
+      },
+    },
+    {
+      dimension: "emotional",
+      scores: [2, 4, 1, 3],
+      zh: {
+        prompt: "当你收到一条并不客气的批评时，你更可能……",
+        options: [
+          "表面接受，心里却反复回放很久",
+          "先分辨其中是否有用，再决定如何回应",
+          "立刻反驳，或者用更强烈的态度保护自己",
+          "当下会不舒服，但会等情绪过去再沟通",
+        ],
+      },
+      en: {
+        prompt: "When you receive a rather blunt piece of criticism, you are more likely to…",
+        options: [
+          "Accept it outwardly but replay it for a long time",
+          "Separate the useful part from the tone before responding",
+          "Push back immediately or defend yourself strongly",
+          "Feel hurt now and communicate after the feeling settles",
+        ],
+      },
+    },
+    {
+      dimension: "adaptability",
+      scores: [3, 1, 4, 2],
+      zh: {
+        prompt: "原定计划突然被打乱，你通常会……",
+        options: [
+          "先停一下，重新安排一个可行版本",
+          "很难马上接受，需要较长时间恢复状态",
+          "迅速切换，甚至能发现原本没有的新机会",
+          "照旧推进原计划，尽量假装变化没有发生",
+        ],
+      },
+      en: {
+        prompt: "When an established plan is suddenly disrupted, you usually…",
+        options: [
+          "Pause briefly and build a workable new version",
+          "Find it hard to accept and need time to recover",
+          "Switch quickly and may even spot an unexpected opening",
+          "Keep pushing the old plan as if little has changed",
+        ],
+      },
+    },
+    {
+      dimension: "responsibility",
+      scores: [4, 2, 1, 3],
+      zh: {
+        prompt: "当你答应朋友一件事，却遇到更重要的临时安排，你会……",
+        options: [
+          "及时说明情况，重新确认承诺或给出替代方案",
+          "拖到最后一刻再说，希望对方能够理解",
+          "先顾眼前的事，过后再解释",
+          "尽快通知对方，并尽量找时间补上",
+        ],
+      },
+      en: {
+        prompt: "You promised a friend something, but a more important commitment suddenly appears. You would…",
+        options: [
+          "Explain promptly, restate the promise, or offer an alternative",
+          "Wait until the last moment and hope they understand",
+          "Attend to the urgent matter first and explain later",
+          "Tell them quickly and try to make up for it soon",
+        ],
+      },
+    },
+    {
+      dimension: "selfAwareness",
+      scores: [3, 1, 4, 2],
+      zh: {
+        prompt: "一种情绪突然涌上来时，你通常……",
+        options: [
+          "会先感受到身体的信号，再慢慢理清原因",
+          "常常被情绪带走，事后才意识到",
+          "能辨认它在提醒什么，也愿意承接它",
+          "知道情绪不对，但说不清发生了什么",
+        ],
+      },
+      en: {
+        prompt: "When an emotion suddenly rises inside you, you usually…",
+        options: [
+          "Notice the signals in your body, then slowly understand why",
+          "Get carried away and only realize what happened later",
+          "Recognize what it is pointing to and stay with it",
+          "Know something is wrong but cannot name it",
+        ],
+      },
+    },
+    {
+      dimension: "curiosity",
+      scores: [2, 4, 1, 3],
+      zh: {
+        prompt: "遇到和自己口味很不一样的作品，你会……",
+        options: [
+          "礼貌地跳过，还是更喜欢自己熟悉的美感",
+          "保持开放，试着理解它为什么能打动人",
+          "只要第一反应不喜欢，就立刻停止体验",
+          "先接触一小部分，再决定是否继续",
+        ],
+      },
+      en: {
+        prompt: "When you meet a piece of work that differs greatly from your taste, you…",
+        options: [
+          "Politely move on and return to what feels familiar",
+          "Stay open and try to understand why it moves other people",
+          "Stop at once if your first reaction is dislike",
+          "Sample a small part before deciding whether to continue",
+        ],
+      },
+    },
+    {
+      dimension: "emotional",
+      scores: [4, 1, 3, 2],
+      zh: {
+        prompt: "期待已久的约会被临时取消，你收到消息后的第一反应更接近……",
+        options: [
+          "有点失落，但会理解变化并重新安排",
+          "非常恼火，忍不住把失望发泄出来",
+          "先体面地说没关系，之后很久都闷闷不乐",
+          "先确认对方的情况，再表达自己的感受",
+        ],
+      },
+      en: {
+        prompt: "A long-awaited plan is cancelled at the last minute. Your first response is closer to…",
+        options: [
+          "Disappointed, but able to understand and rearrange",
+          "Very upset, with the frustration spilling outward",
+          "Saying it is fine, then carrying the disappointment quietly",
+          "Checking what happened first, then expressing how you feel",
+        ],
+      },
+    },
+    {
+      dimension: "adaptability",
+      scores: [1, 3, 4, 2],
+      zh: {
+        prompt: "走进一个几乎没有熟人的聚会，你通常会……",
+        options: [
+          "尽量待在角落，等别人主动来找你",
+          "先听大家聊，再在合适的时候加入",
+          "自然观察气氛，主动找到一个可以对话的人",
+          "只和认识的人待在一起，避免进入新圈子",
+        ],
+      },
+      en: {
+        prompt: "You arrive at a gathering where you barely know anyone. You usually…",
+        options: [
+          "Stay near the edge and wait for others to approach you",
+          "Listen first, then join in when the moment feels right",
+          "Read the mood and initiate a conversation with someone",
+          "Stick with people you know and avoid new circles",
+        ],
+      },
+    },
+    {
+      dimension: "responsibility",
+      scores: [3, 1, 4, 2],
+      zh: {
+        prompt: "你意识到自己在一个合作中犯了错，你会……",
+        options: [
+          "尽快告诉相关的人，同时提出补救办法",
+          "希望没人发现，先自己悄悄处理",
+          "承认错误、了解影响，并主动承担修复工作",
+          "先解释外部原因，再考虑是否提及自己的责任",
+        ],
+      },
+      en: {
+        prompt: "You realize you made a mistake in a collaboration. You would…",
+        options: [
+          "Tell the people involved soon and offer a repair plan",
+          "Hope no one notices and quietly fix it yourself",
+          "Own the mistake, understand its impact, and lead the repair",
+          "Explain outside causes first before mentioning your part",
+        ],
+      },
+    },
+    {
+      dimension: "selfAwareness",
+      scores: [2, 4, 1, 3],
+      zh: {
+        prompt: "收到关于自己的反馈时，你更常出现的状态是……",
+        options: [
+          "容易先觉得被否定，只想尽快结束对话",
+          "会收下反馈，同时分辨哪些与自己真正有关",
+          "反复分析每个字，最后忽略了反馈的重点",
+          "先记录事实，过一段时间再判断是否认同",
+        ],
+      },
+      en: {
+        prompt: "When you receive feedback about yourself, you more often…",
+        options: [
+          "Feel rejected and want the conversation to end",
+          "Take it in while discerning what is truly relevant to you",
+          "Analyze every word until the main point gets lost",
+          "Record the facts and decide later whether you agree",
+        ],
+      },
+    },
+    {
+      dimension: "curiosity",
+      scores: [4, 2, 3, 1],
+      zh: {
+        prompt: "出现一种新的工具或方法时，你的态度更接近……",
+        options: [
+          "先亲自试一下，了解它能带来什么不同",
+          "等身边人验证可靠后，再决定是否使用",
+          "根据需要学习，只掌握能解决问题的部分",
+          "能不改变就不改变，熟悉的方法已经够用",
+        ],
+      },
+      en: {
+        prompt: "A new tool or method appears. Your attitude is closer to…",
+        options: [
+          "Try it myself to see what feels different",
+          "Wait until people around me confirm it is reliable",
+          "Learn only what I need to solve the current problem",
+          "Avoid changing if I can; the familiar way is enough",
+        ],
+      },
+    },
+    {
+      dimension: "emotional",
+      scores: [3, 4, 1, 2],
+      zh: {
+        prompt: "夜深时，担忧开始在心里反复出现，你会……",
+        options: [
+          "先做点能让自己安定的事，再处理具体问题",
+          "把担心写下来，分清哪些能行动、哪些只能放下",
+          "不断搜索和想象最坏的结果，直到精疲力竭",
+          "逼自己不要想，但越压越睡不着",
+        ],
+      },
+      en: {
+        prompt: "At night, worries begin to circle in your mind. You…",
+        options: [
+          "Do something grounding first, then address what is concrete",
+          "Write the worries down and separate action from what to release",
+          "Search and imagine the worst until you are exhausted",
+          "Try not to think, but the pressure keeps you awake",
+        ],
+      },
+    },
+    {
+      dimension: "adaptability",
+      scores: [1, 4, 3, 2],
+      zh: {
+        prompt: "和一个与你观点很不同的人对话时，你会……",
+        options: [
+          "尽快结束话题，避免彼此都不愉快",
+          "先弄清他为什么这样想，再决定是否调整自己的看法",
+          "能继续交流，但更关注如何把观点说清楚",
+          "不断证明自己是对的，很难听进另一种可能",
+        ],
+      },
+      en: {
+        prompt: "In a conversation with someone whose views differ greatly from yours, you…",
+        options: [
+          "Wrap up quickly to avoid discomfort",
+          "First understand why they think so, then reconsider your own view",
+          "Keep talking, but focus mainly on making your point clear",
+          "Keep proving you are right and rarely take in another possibility",
+        ],
+      },
+    },
+    {
+      dimension: "responsibility",
+      scores: [2, 4, 1, 3],
+      zh: {
+        prompt: "看到一件很喜欢但并非必需的东西，你通常……",
+        options: [
+          "先买下来，之后再考虑预算",
+          "给自己一点时间，确认它是否真正需要",
+          "立刻下单，因为错过会一直想着",
+          "看看替代方案，再按可支配预算做决定",
+        ],
+      },
+      en: {
+        prompt: "You see something you love but do not really need. You usually…",
+        options: [
+          "Buy it first and think about the budget later",
+          "Give it some time and check whether it is truly useful",
+          "Order it immediately because missing out will nag you",
+          "Compare alternatives, then decide within your available budget",
+        ],
+      },
+    },
+    {
+      dimension: "selfAwareness",
+      scores: [4, 3, 1, 2],
+      zh: {
+        prompt: "看到同龄人取得很亮眼的成绩时，你更容易……",
+        options: [
+          "把它当作信息，回到自己的节奏继续前进",
+          "会有一点比较，但能看见自己已经拥有什么",
+          "立刻觉得自己落后，甚至否定过去的努力",
+          "刻意不看，避免心里不舒服",
+        ],
+      },
+      en: {
+        prompt: "When someone your age achieves something remarkable, you more often…",
+        options: [
+          "Take it as information and return to your own pace",
+          "Feel some comparison, but also see what you already have",
+          "Feel instantly behind and dismiss your past efforts",
+          "Look away to avoid the discomfort",
+        ],
+      },
+    },
+    {
+      dimension: "curiosity",
+      scores: [2, 4, 3, 1],
+      zh: {
+        prompt: "听到一个从没接触过的概念，你会……",
+        options: [
+          "先记在心里，以后有需要再了解",
+          "追问它的意思，并顺手找例子把它弄明白",
+          "等别人继续讲，看看是否会自然理解",
+          "觉得离自己太远，尽快把话题转开",
+        ],
+      },
+      en: {
+        prompt: "You hear a concept you have never encountered. You…",
+        options: [
+          "Make a mental note and look it up if it becomes useful",
+          "Ask what it means and find an example to make sense of it",
+          "Wait for the other person to explain and hope it becomes clear",
+          "Feel it is too far from your world and change the subject",
+        ],
+      },
+    },
+    {
+      dimension: "emotional",
+      scores: [4, 3, 1, 2],
+      zh: {
+        prompt: "面对一段不得不等待的空白时间，你更可能……",
+        options: [
+          "接受它暂时无法改变，并找方式让这段时间有用",
+          "会有点烦躁，但能慢慢把注意力放到别处",
+          "不停确认进度，越等越焦躁",
+          "把等待当成浪费，情绪一直好不起来",
+        ],
+      },
+      en: {
+        prompt: "Faced with empty time you simply have to wait through, you are more likely to…",
+        options: [
+          "Accept what cannot change yet and make the time useful",
+          "Feel a little restless, then gradually shift your attention",
+          "Keep checking progress and become more anxious",
+          "See the wait as wasted time and stay in a low mood",
+        ],
+      },
+    },
+    {
+      dimension: "adaptability",
+      scores: [1, 3, 4, 2],
+      zh: {
+        prompt: "一项任务的截止时间突然提前，你会先……",
+        options: [
+          "感到全盘失控，很难开始行动",
+          "确认最重要的工作，再调整完成的顺序",
+          "立刻重新拆分任务，集中资源先保住关键结果",
+          "继续按原节奏做，最后一段时间拼命赶完",
+        ],
+      },
+      en: {
+        prompt: "A deadline is suddenly moved earlier. You first…",
+        options: [
+          "Feel everything is out of control and struggle to start",
+          "Identify the most important work and reorder the rest",
+          "Re-plan the task immediately and protect the key result",
+          "Keep the old pace, then rush everything at the end",
+        ],
+      },
+    },
+    {
+      dimension: "responsibility",
+      scores: [3, 4, 1, 2],
+      zh: {
+        prompt: "朋友需要帮助，但这会明显占用你自己的时间，你会……",
+        options: [
+          "先确认自己能帮到哪一步，再给出清楚的回应",
+          "说明自己的边界，并一起寻找双方都能接受的办法",
+          "不管自己状态如何先答应，最后独自疲惫",
+          "因为不想麻烦，直接回避对方的请求",
+        ],
+      },
+      en: {
+        prompt: "A friend needs help, but it will clearly consume your time. You…",
+        options: [
+          "Check what you can realistically offer, then answer clearly",
+          "Name your boundary and look for a workable middle ground",
+          "Say yes regardless, then end up exhausted alone",
+          "Avoid the request because you do not want the trouble",
+        ],
+      },
+    },
+    {
+      dimension: "selfAwareness",
+      scores: [2, 1, 4, 3],
+      zh: {
+        prompt: "提到“成功”时，你心里更接近哪幅画面？",
+        options: [
+          "达到大多数人认可的稳定状态",
+          "得到外部的认可，证明自己没有落后",
+          "能按自己重视的价值生活，并为此承担选择",
+          "有一份可见的成绩，也有属于自己的生活",
+        ],
+      },
+      en: {
+        prompt: "When you think of “success,” which image feels closer?",
+        options: [
+          "Reaching a stable life that most people approve of",
+          "Earning external recognition and proving you are not behind",
+          "Living by values you care about and owning the choices that follow",
+          "Having visible achievements and a life that still feels yours",
+        ],
+      },
+    },
+    {
+      dimension: "curiosity",
+      scores: [3, 1, 4, 2],
+      zh: {
+        prompt: "一个完全空白的周末突然出现在你面前，你更想……",
+        options: [
+          "选一件一直想做的小事，给自己一点新鲜感",
+          "最好提前排好计划，否则会觉得没有方向",
+          "随兴出发，看看这一天会把自己带到哪里",
+          "按平常的习惯度过，不想增加额外选择",
+        ],
+      },
+      en: {
+        prompt: "A completely open weekend appears before you. You would rather…",
+        options: [
+          "Pick one small thing you have been meaning to try",
+          "Plan it in advance; too much openness feels directionless",
+          "Set off spontaneously and see where the day takes you",
+          "Follow your usual routine and avoid extra choices",
+        ],
+      },
+    },
+    {
+      dimension: "emotional",
+      scores: [4, 3, 2, 1],
+      zh: {
+        prompt: "回想一件让你后悔的事，你现在更接近……",
+        options: [
+          "能看见当时的选择，也知道之后可以怎样做得不同",
+          "仍会偶尔难受，但已经允许事情留在过去",
+          "经常重新回放，希望当时的自己能更聪明",
+          "一想到就会责备自己，很难停止",
+        ],
+      },
+      en: {
+        prompt: "Thinking of something you regret, you now feel closer to…",
+        options: [
+          "Seeing why you chose as you did, and what can differ next time",
+          "Occasional discomfort, while letting the moment remain in the past",
+          "Replaying it often, wishing your past self had known better",
+          "Blaming yourself each time the memory returns",
+        ],
+      },
+    },
+    {
+      dimension: "adaptability",
+      scores: [2, 1, 4, 3],
+      zh: {
+        prompt: "一位亲近的人选择了与你很不同的生活方式，你会……",
+        options: [
+          "能够接受，但心里仍希望他早点回到你熟悉的方式",
+          "很难理解，觉得自己的选择才更合理",
+          "先保持好奇，理解他的价值排序，再尊重他的生活方式",
+          "接受彼此不同，并调整你们相处的方式",
+        ],
+      },
+      en: {
+        prompt: "Someone close to you chooses a very different way of life. You…",
+        options: [
+          "Accept it, but still hope they return to what feels familiar",
+          "Find it hard to understand and think your way makes more sense",
+          "Stay curious, understand their priorities, and respect their path",
+          "Accept the difference and adapt how you relate to each other",
+        ],
+      },
+    },
+    {
+      dimension: "responsibility",
+      scores: [4, 2, 1, 3],
+      zh: {
+        prompt: "面对一个影响很大的选择，你通常……",
+        options: [
+          "先明确自己真正重视什么，再权衡代价与后果",
+          "会拖到不能再拖，希望有人替自己决定",
+          "先凭当下的感觉做决定，之后再看情况",
+          "听取信任的人的意见，再结合自己的判断",
+        ],
+      },
+      en: {
+        prompt: "Faced with a high-impact decision, you usually…",
+        options: [
+          "Clarify what matters most, then weigh costs and consequences",
+          "Delay until you cannot, hoping someone will decide for you",
+          "Choose by immediate feeling and figure it out afterward",
+          "Seek trusted perspectives, then combine them with your judgment",
+        ],
+      },
+    },
+    {
+      dimension: "selfAwareness",
+      scores: [3, 4, 1, 2],
+      zh: {
+        prompt: "回头看一次情绪很强烈的反应，你更可能……",
+        options: [
+          "知道它发生过，但不太想再深入查看",
+          "能找到触发点，也看见其中和自己的哪部分有关",
+          "觉得都是别人造成的，自己只是被迫反应",
+          "记得那种感觉，却依然很难说清真正的原因",
+        ],
+      },
+      en: {
+        prompt: "Looking back at an intense emotional reaction, you are more likely to…",
+        options: [
+          "Know it happened but prefer not to look deeper",
+          "Identify the trigger and see which part of you it touched",
+          "Feel others caused it and you were forced to react",
+          "Remember the feeling but still struggle to name the cause",
+        ],
+      },
+    },
+    {
+      dimension: "curiosity",
+      scores: [4, 1, 3, 2],
+      zh: {
+        prompt: "去一个熟悉的目的地时，发现旁边有一条没走过的小路，你会……",
+        options: [
+          "如果时间允许，就绕过去看看会遇到什么",
+          "坚持走最稳妥的路线，不想承担未知的风险",
+          "先确认能走通，再给自己一次小小的探索",
+          "看一眼就好，通常不会真的改变路线",
+        ],
+      },
+      en: {
+        prompt: "On the way to a familiar destination, you notice an unexplored side path. You…",
+        options: [
+          "Take it if there is time, curious about what you will find",
+          "Stay on the safest route and avoid unknown risk",
+          "Check that it connects, then allow a small detour",
+          "Glance at it, but rarely change the route",
+        ],
+      },
+    },
+    {
+      dimension: "emotional",
+      scores: [3, 1, 4, 2],
+      zh: {
+        prompt: "和重要的人发生冲突时，你更可能……",
+        options: [
+          "先冷静一点，再找机会把真正的需求说清楚",
+          "为了不破坏关系，把不开心全部压下去",
+          "能觉察到情绪，先暂停争论，等双方都稳定再谈",
+          "用更激烈的方式回应，直到对方先退让",
+        ],
+      },
+      en: {
+        prompt: "In a conflict with someone important, you are more likely to…",
+        options: [
+          "Calm down first, then find a time to name what you need",
+          "Suppress your feelings to keep the relationship intact",
+          "Notice the emotion, pause the argument, and talk once both settle",
+          "Respond more intensely until the other person backs down",
+        ],
+      },
+    },
+    {
+      dimension: "adaptability",
+      scores: [2, 4, 3, 1],
+      zh: {
+        prompt: "当信息不足、方向也不清楚时，你通常……",
+        options: [
+          "一直收集信息，直到觉得必须完全确定",
+          "先做一个成本很小的尝试，用反馈判断下一步",
+          "主动确认关键假设，再决定要投入多少",
+          "因为看不清结果，选择暂时不动",
+        ],
+      },
+      en: {
+        prompt: "When information is limited and the direction is unclear, you usually…",
+        options: [
+          "Keep gathering information until everything feels certain",
+          "Run a small low-cost experiment and use feedback to choose",
+          "Test the key assumptions before deciding how much to invest",
+          "Stay still because the outcome is hard to see",
+        ],
+      },
+    },
+    {
+      dimension: "responsibility",
+      scores: [1, 4, 3, 2],
+      zh: {
+        prompt: "团队没有按时完成一项共同任务，你更可能……",
+        options: [
+          "先找出谁拖了后腿，让大家知道问题不在自己",
+          "先确认事实和影响，再提出下一步能怎么补救",
+          "看看自己这部分能否先补上，同时协调其他部分",
+          "暂时不表态，等负责人来处理",
+        ],
+      },
+      en: {
+        prompt: "A team misses a shared deadline. You are more likely to…",
+        options: [
+          "First identify who slowed things down and show it was not you",
+          "Clarify the facts and impact, then propose the next repair step",
+          "Fix what you can in your part while coordinating the rest",
+          "Say nothing and wait for the person in charge",
+        ],
+      },
+    },
+    {
+      dimension: "selfAwareness",
+      scores: [3, 1, 4, 2],
+      zh: {
+        prompt: "想到未来时，你更常见的状态是……",
+        options: [
+          "会有一些方向，但更愿意走一步看一步",
+          "越想越焦虑，却很难分辨真正担心的是什么",
+          "知道自己重视什么，也愿意为不确定留出空间",
+          "需要把所有事情想清楚，才能开始行动",
+        ],
+      },
+      en: {
+        prompt: "When you think about the future, you more often…",
+        options: [
+          "Have a loose direction and prefer to take one step at a time",
+          "Feel anxious without being able to name the real worry",
+          "Know what matters to you and leave room for uncertainty",
+          "Need to figure everything out before you can begin",
+        ],
+      },
+    },
+  ];
+
+  const dimensions = [
+    {
+      key: "curiosity",
+      index: "01",
+      zh: "好奇探索",
+      en: "Curiosity",
+      levels: {
+        zh: ["审慎", "开放", "旺盛"],
+        en: ["Guarded", "Open", "Vibrant"],
+      },
+      descriptions: {
+        zh: {
+          low: "你更重视熟悉、确定和可控的体验。未知不一定令人兴奋，有时首先意味着风险。",
+          mid: "你能在熟悉与未知之间保持弹性：需要时会探索，也懂得在不确定中收回精力。",
+          high: "你愿意让未知保持开放，新鲜的信息和体验很容易成为你的能量来源。",
+        },
+        en: {
+          low: "You value what is familiar, certain, and manageable. The unknown can mean risk before it means possibility.",
+          mid: "You move flexibly between the known and the new: exploring when useful, and stepping back when needed.",
+          high: "You keep the unknown open. New information and experiences readily become sources of energy.",
+        },
+      },
+      strength: {
+        zh: "你会让新的信息和体验进入生活，因此不容易被单一的答案困住。面对变化时，你往往能看见更多入口，也更容易保持学习感。",
+        en: "You let new information and experiences into your life, so a single answer rarely traps you. Change often reveals more entry points, and learning stays alive.",
+      },
+      growth: {
+        zh: "当不确定性升高时，你可能更快退回熟悉的方法。下一次，不妨给一个很小的新尝试留出十分钟：先体验，再判断。",
+        en: "When uncertainty rises, you may withdraw toward familiar methods. Next time, give one small experiment ten minutes: experience it before judging it.",
+      },
+    },
+    {
+      key: "emotional",
+      index: "02",
+      zh: "情绪韧性",
+      en: "Emotional resilience",
+      levels: {
+        zh: ["敏感", "有韧性", "稳定"],
+        en: ["Sensitive", "Resilient", "Steady"],
+      },
+      descriptions: {
+        zh: {
+          low: "你的情绪很灵敏，外界的波动容易被你接收。它让你有感受力，也可能让你需要更长时间回到稳定。",
+          mid: "你能感受到情绪，也拥有一定的缓冲空间。多数时候，你能等到波动过去再做重要回应。",
+          high: "你给情绪留出了空间，也保留了行动能力。你更能区分“我现在很难受”和“我现在必须立刻反应”。",
+        },
+        en: {
+          low: "Your emotions are highly attuned. You notice outer shifts quickly, which brings sensitivity and may need more time to settle.",
+          mid: "You feel emotion and also have some inner buffer. Most of the time, you can wait for the wave to pass before responding.",
+          high: "You make room for emotion without losing your ability to act. You can separate “I feel awful” from “I must react now.”",
+        },
+      },
+      strength: {
+        zh: "你不急着把情绪消灭，而是能给感受一点缓冲。这种容纳能力会降低冲动反应，也让重要的沟通更有机会发生在情绪稳定之后。",
+        en: "You do not rush to erase a feeling; you give it some buffer. That capacity reduces impulsive reactions and lets important conversations happen after the storm.",
+      },
+      growth: {
+        zh: "情绪强烈时，先试着把它写成一句话：“我现在感到___，因为我以为___。”命名不等于沉溺，它能让模糊的压力变得可处理。",
+        en: "When emotion is strong, write one sentence: “I feel ___ because I believe ___.” Naming is not wallowing; it makes diffuse pressure workable.",
+      },
+    },
+    {
+      key: "adaptability",
+      index: "03",
+      zh: "开放适应",
+      en: "Open adaptability",
+      levels: {
+        zh: ["偏好稳定", "可调节", "高度灵活"],
+        en: ["Stability-seeking", "Adjustable", "Highly flexible"],
+      },
+      descriptions: {
+        zh: {
+          low: "确定性会让你更安心。变化来临时，你通常需要更多时间和清晰结构，才能重新找到方向。",
+          mid: "你能根据情况调整，但仍需要一条可以抓住的主线。你不是拒绝变化，只是在变化中保留自己的节奏。",
+          high: "你擅长在不完整的信息中行动，能从反馈里快速修正。变化对你来说不只是打断，也可能是新的路径。",
+        },
+        en: {
+          low: "Certainty helps you feel safe. When change arrives, you often need more time and structure to find your direction.",
+          mid: "You can adjust, but still need a main thread to hold. You do not reject change; you keep your rhythm within it.",
+          high: "You can act with incomplete information and revise quickly from feedback. Change is not only interruption; it can be a new route.",
+        },
+      },
+      strength: {
+        zh: "你能让自己的判断跟着现实更新，而不是只维护最初的计划。这让你在模糊与变化中保持行动力，也更容易找到第三条路。",
+        en: "You let your judgment update with reality instead of defending the first plan. This keeps you moving through ambiguity and helps you find a third path.",
+      },
+      growth: {
+        zh: "适应性并不意味着一直改变。试着区分“值得调整的部分”和“不能妥协的底线”，稳定感会让你走得更远。",
+        en: "Adaptability does not mean always changing. Distinguish what can adjust from what cannot be compromised; stability will help you go further.",
+      },
+    },
+    {
+      key: "responsibility",
+      index: "04",
+      zh: "责任边界",
+      en: "Responsibility & boundaries",
+      levels: {
+        zh: ["跟随当下", "较有分寸", "边界清晰"],
+        en: ["In the moment", "Balanced", "Clear boundaries"],
+      },
+      descriptions: {
+        zh: {
+          low: "你更愿意跟随当下的感受和便利做决定，长期影响有时会被放到后面。责任对你来说可能还缺少具体的边界。",
+          mid: "你能看见承诺的后果，也会照顾自己的承受范围。多数时候，你在负责与自保之间寻找平衡。",
+          high: "你能看见选择带来的后果，并愿意明确承诺、承担修复。同时，你知道责任不等于无限度地牺牲自己。",
+        },
+        en: {
+          low: "You tend to follow the immediate feeling or convenience, with long-term effects arriving later. Responsibility may still lack concrete boundaries.",
+          mid: "You see the consequences of promises and also protect your capacity. Most of the time, you balance duty with self-care.",
+          high: "You see what choices set in motion and are willing to make commitments and repair harm. You also know responsibility is not endless self-sacrifice.",
+        },
+      },
+      strength: {
+        zh: "你能够看见选择造成的涟漪，并愿意为重要的人和事承担一部分重量。这让你给人一种可靠感，也让关系更有可预期性。",
+        en: "You see the ripples of your choices and are willing to carry weight for people and projects that matter. This makes you reliable and relationships more predictable.",
+      },
+      growth: {
+        zh: "负责任之前，先问自己两个问题：这是我真正承诺的吗？我的承担会耗尽自己吗？清晰地说“不”，有时也是对关系负责。",
+        en: "Before saying yes, ask: Did I truly promise this? Will carrying it exhaust me? A clear no can also be an act of responsibility.",
+      },
+    },
+    {
+      key: "selfAwareness",
+      index: "05",
+      zh: "自我觉察",
+      en: "Self-awareness",
+      levels: {
+        zh: ["正在觉察", "逐步清晰", "高度自觉"],
+        en: ["Emerging", "Taking shape", "Highly aware"],
+      },
+      descriptions: {
+        zh: {
+          low: "你可能更关注发生了什么，还不太容易辨认自己真正想要什么、被什么触发。觉察可以从身体感受和反复出现的情绪开始。",
+          mid: "你对自己的反应有一定理解，也能看见部分模式。有些时候仍需要时间和外部反馈，才看得更清楚。",
+          high: "你能辨认自己的触发点、需要与价值排序，也能区分真实的自己和外界的期待。这给选择带来了更高的清晰度。",
+        },
+        en: {
+          low: "You may focus on what happened before noticing what you want or what was triggered. Awareness can begin with body sensations and recurring emotions.",
+          mid: "You have some understanding of your reactions and patterns. Sometimes you still need time and outside feedback to see clearly.",
+          high: "You can recognize your triggers, needs, and priorities, and separate your true self from external expectations. This brings clarity to choices.",
+        },
+      },
+      strength: {
+        zh: "你愿意观察自己的动机与反应，而不是只被结果推着走。这让你能够修正惯性，也更容易做出与内在价值一致的选择。",
+        en: "You are willing to observe your motives and reactions instead of being pushed only by outcomes. This lets you revise habits and choose in line with your values.",
+      },
+      growth: {
+        zh: "觉察可以从更小的动作开始：每天选一件让你有情绪的事，只记录事实、感受和需要，不急着评价对错。",
+        en: "Begin with a smaller practice: each day, pick one emotional moment and note the facts, feelings, and needs without rushing to judge it.",
+      },
+    },
+  ];
+
+  const dimensionMap = Object.fromEntries(dimensions.map((dimension) => [dimension.key, dimension]));
+
+  const ageBands = {
+    muchYounger: {
+      zh: {
+        archetype: "自在探索者",
+        summary:
+          "你的心理年龄为 {mental} 岁，比实际年龄年轻 {gap} 岁。你对新事物保持敏感，也更愿意让生活留有即兴和试错的空间。这种年轻感不是不成熟，而是你仍在允许自己更新。",
+        guidance:
+          "轻盈是你的资源。给一件真正重要的事设定完成节点，再为一个具体承诺加上可追踪的边界；当新鲜感与持续性同时存在，你会更自由。",
+        reflection: "如果不必证明自己已经足够成熟，你最想怎样使用这份轻盈？",
+      },
+      en: {
+        archetype: "Free Explorer",
+        summary:
+          "Your inner age is {mental}, {gap} years younger than your actual age. You stay alert to the new and leave room for improvisation and trial. This lightness is not immaturity; you are still allowing yourself to update.",
+        guidance:
+          "Lightness is a resource. Give one thing that truly matters a finishing point, then add a trackable boundary to one concrete promise. With freshness and continuity together, freedom becomes more sustainable.",
+        reflection: "If you did not need to prove you were mature enough, how would you use this lightness?",
+      },
+    },
+    younger: {
+      zh: {
+        archetype: "轻盈成长者",
+        summary:
+          "你的心理年龄为 {mental} 岁，比实际年龄年轻 {gap} 岁。你仍保有好奇与弹性，同时开始形成自己的稳定节奏。你最值得关注的是如何让自由感与现实责任彼此兼容。",
+        guidance:
+          "你不需要为了显得成熟而收紧自己。更有效的做法是给自由加上结构：固定一段时间处理责任，也固定一段时间不追求产出，只做让自己鲜活的事。",
+        reflection: "在自由与稳定之间，哪一个边界最值得你主动设计？",
+      },
+      en: {
+        archetype: "Light Grower",
+        summary:
+          "Your inner age is {mental}, {gap} years younger than your actual age. You keep curiosity and flexibility while beginning to form a steadier rhythm. Your central question is how freedom can coexist with real responsibility.",
+        guidance:
+          "You do not need to tighten yourself to appear mature. Give freedom more structure: reserve time for responsibility, and reserve time that produces nothing and simply keeps you alive.",
+        reflection: "Which boundary between freedom and stability would benefit most from your active design?",
+      },
+    },
+    aligned: {
+      zh: {
+        archetype: "同频平衡者",
+        summary:
+          "你的心理年龄为 {mental} 岁，与实际年龄几乎同频。你能在探索与稳定之间切换，内在较少被“我是否太幼稚”或“我是否已经太老”拉扯。这是一种顺畅感，也需要留意自己真实的需求。",
+        guidance:
+          "同频不代表停滞。每隔一个月问自己一次：现在的生活是主动选择的，还是只是顺利延续下来的？一个不需要理由的小改变，能帮你继续认识自己。",
+        reflection: "当环境不再要求你适应时，你仍会主动选择什么？",
+      },
+      en: {
+        archetype: "Inner Aligner",
+        summary:
+          "Your inner age is {mental}, almost in tune with your actual age. You can move between exploration and stability with little tug-of-war over being “too young” or “too old.” This is a smoothness worth noticing, along with your own actual needs.",
+        guidance:
+          "Being aligned does not mean standing still. Once a month, ask: Is my life actively chosen, or simply continuing smoothly? One change with no practical purpose can keep self-knowledge alive.",
+        reflection: "When the environment stops asking you to adapt, what will you actively choose?",
+      },
+    },
+    older: {
+      zh: {
+        archetype: "沉稳整合者",
+        summary:
+          "你的心理年龄为 {mental} 岁，比实际年龄成熟 {gap} 岁。你倾向于先理解结构、承担责任和照顾长期后果，也拥有较好的情绪容量。这带来可靠感，不过别忘了为自己保留犯错和不产出的空间。",
+        guidance:
+          "成熟不等于总要正确处理一切。试着每周安排一件低风险、无收益、只因为好奇而做的事；允许自己偶尔幼稚，反而能让责任感保持弹性。",
+        reflection: "最近一次，你纯粹因为好奇而行动，是什么时候？",
+      },
+      en: {
+        archetype: "Steady Integrator",
+        summary:
+          "Your inner age is {mental}, {gap} years more mature than your actual age. You tend to understand structures, carry responsibility, and consider long-term consequences, with good emotional capacity. This creates trust, but leave room to be wrong and unproductive.",
+        guidance:
+          "Maturity does not mean always handling everything correctly. Each week, do one low-risk, outcome-free thing simply out of curiosity. A little immaturity keeps responsibility flexible.",
+        reflection: "When did you last act purely from curiosity?",
+      },
+    },
+    muchOlder: {
+      zh: {
+        archetype: "深度守望者",
+        summary:
+          "你的心理年龄为 {mental} 岁，比实际年龄成熟 {gap} 岁。你可能长期站在照顾者、决策者或“先把局面稳住”的位置，拥有清晰的边界与情绪容量。你也可能习惯把自己的愿望排在“应该”之后。",
+        guidance:
+          "请把一部分“我要负责”交还给环境和他人。优先做一件能让你恢复玩心、又不需要向任何人解释成果的事；被照顾并不削弱你的可靠。",
+        reflection: "如果把“应该”暂时放下一天，你最想听见自己说什么？",
+      },
+      en: {
+        archetype: "Deep Guardian",
+        summary:
+          "Your inner age is {mental}, {gap} years more mature than your actual age. You may often occupy the role of caregiver, decision-maker, or the one who stabilizes the room. You have clear boundaries and emotional capacity, but may place “should” before “want.”",
+        guidance:
+          "Return some of “I must take care of this” to the situation and to other people. Prioritize something that restores play and needs no explanation of its output. Being cared for does not make you less reliable.",
+        reflection: "If you set down “should” for one day, what would you most want to hear yourself say?",
+      },
+    },
+  };
+
+  const state = {
+    lang: "zh",
+    view: "intro",
+    actualAge: null,
+    answers: Array(TOTAL_QUESTIONS).fill(null),
+    current: 0,
+    result: null,
+    transitioning: false,
+  };
+
+  const elements = {
+    introView: document.getElementById("introView"),
+    testView: document.getElementById("testView"),
+    resultView: document.getElementById("resultView"),
+    actualAge: document.getElementById("actualAge"),
+    ageInputWrap: document.getElementById("ageInputWrap"),
+    ageError: document.getElementById("ageError"),
+    startButton: document.getElementById("startButton"),
+    exitButton: document.getElementById("exitButton"),
+    brandHome: document.getElementById("brandHome"),
+    languageButtons: [...document.querySelectorAll(".language-option")],
+    questionNumber: document.getElementById("questionNumber"),
+    progressTrack: document.getElementById("progressTrack"),
+    progressFill: document.getElementById("progressFill"),
+    progressLabel: document.getElementById("progressLabel"),
+    questionStage: document.getElementById("questionStage"),
+    dimensionLabel: document.getElementById("dimensionLabel"),
+    questionText: document.getElementById("questionText"),
+    optionList: document.getElementById("optionList"),
+    previousButton: document.getElementById("previousButton"),
+    mentalAgeNumber: document.getElementById("mentalAgeNumber"),
+    archetypePill: document.getElementById("archetypePill"),
+    differenceValue: document.getElementById("differenceValue"),
+    differenceDirection: document.getElementById("differenceDirection"),
+    resultSummary: document.getElementById("resultSummary"),
+    actualAgeValue: document.getElementById("actualAgeValue"),
+    mentalAgeValue: document.getElementById("mentalAgeValue"),
+    actualMarker: document.getElementById("actualMarker"),
+    mentalMarker: document.getElementById("mentalMarker"),
+    spectrumTicks: document.getElementById("spectrumTicks"),
+    dimensionGrid: document.getElementById("dimensionGrid"),
+    insightGrid: document.getElementById("insightGrid"),
+    reflectionQuestion: document.getElementById("reflectionQuestion"),
+    shareUrl: document.getElementById("shareUrl"),
+    shareButton: document.getElementById("shareButton"),
+    copyButton: document.getElementById("copyButton"),
+    restartButton: document.getElementById("restartButton"),
+    toast: document.getElementById("toast"),
+  };
+
+  function format(template, values) {
+    return Object.entries(values).reduce(
+      (result, [key, value]) => result.replaceAll(`{${key}}`, String(value)),
+      template,
+    );
+  }
+
+  function t(key) {
+    return copy[state.lang][key];
+  }
+
+  function clamp(value, min, max) {
+    return Math.min(Math.max(value, min), max);
+  }
+
+  function padNumber(value) {
+    return String(value).padStart(2, "0");
+  }
+
+  function readSavedLanguage() {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      return saved === "en" ? "en" : "zh";
+    } catch {
+      return "zh";
+    }
+  }
+
+  function saveLanguage() {
+    try {
+      localStorage.setItem(STORAGE_KEY, state.lang);
+    } catch {
+      // Local storage can be unavailable in some private or file contexts.
+    }
+  }
+
+  function renderStaticCopy() {
+    document.documentElement.lang = state.lang === "zh" ? "zh-CN" : "en";
+    document.title = t("pageTitle");
+    document.querySelectorAll("[data-i18n]").forEach((node) => {
+      const key = node.dataset.i18n;
+      if (copy[state.lang][key]) {
+        node.textContent = copy[state.lang][key];
+      }
+    });
+
+    elements.brandHome.setAttribute(
+      "aria-label",
+      state.lang === "zh" ? "返回首页" : "Back to homepage",
+    );
+    elements.languageButtons.forEach((button) => {
+      const active = button.dataset.lang === state.lang;
+      button.classList.toggle("is-active", active);
+      button.setAttribute("aria-pressed", String(active));
+    });
+  }
+
+  function setLanguage(lang) {
+    if (!copy[lang] || lang === state.lang) {
+      return;
+    }
+
+    state.lang = lang;
+    saveLanguage();
+    renderStaticCopy();
+    clearAgeError();
+
+    if (state.view === "test") {
+      renderQuestion(false);
+    } else if (state.view === "result" && state.result) {
+      renderResult();
+    }
+  }
+
+  function showView(view) {
+    state.view = view;
+    elements.introView.classList.toggle("is-hidden", view !== "intro");
+    elements.testView.classList.toggle("is-hidden", view !== "test");
+    elements.resultView.classList.toggle("is-hidden", view !== "result");
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }
+
+  function replaceHistoryUrl(url) {
+    try {
+      window.history.replaceState({}, "", url);
+      return true;
+    } catch {
+      // Some browsers restrict history changes for pages opened through file://.
+      // The result still works and the generated share link remains available.
+      return false;
+    }
+  }
+
+  function clearAgeError() {
+    elements.ageError.textContent = "";
+    elements.ageInputWrap.classList.remove("has-error");
+    elements.actualAge.removeAttribute("aria-invalid");
+  }
+
+  function showAgeError(message) {
+    elements.ageError.textContent = message;
+    elements.ageInputWrap.classList.add("has-error");
+    elements.actualAge.setAttribute("aria-invalid", "true");
+  }
+
+  function validateAge() {
+    const raw = elements.actualAge.value.trim();
+    if (!raw) {
+      showAgeError(t("requiredAge"));
+      elements.actualAge.focus();
+      return null;
+    }
+
+    const age = Number(raw);
+    if (!Number.isInteger(age) || age < MIN_AGE || age > MAX_AGE) {
+      showAgeError(t("invalidAge"));
+      elements.actualAge.focus();
+      return null;
+    }
+
+    clearAgeError();
+    return age;
+  }
+
+  function removeResultFromUrl() {
+    try {
+      const url = new URL(window.location.href);
+      url.searchParams.delete("r");
+      replaceHistoryUrl(url);
+    } catch {
+      // Keep the page usable even when URL APIs or history are restricted.
+    }
+  }
+
+  function startTest() {
+    const age = validateAge();
+    if (age === null) {
+      return;
+    }
+
+    state.actualAge = age;
+    state.answers = Array(TOTAL_QUESTIONS).fill(null);
+    state.current = 0;
+    state.result = null;
+    removeResultFromUrl();
+    showView("test");
+    renderQuestion(true);
+  }
+
+  function getAnsweredCount() {
+    return state.answers.filter((answer) => answer !== null).length;
+  }
+
+  function updateProgress() {
+    const answered = getAnsweredCount();
+    const progress = Math.round((answered / TOTAL_QUESTIONS) * 100);
+    elements.progressFill.style.width = `${progress}%`;
+    elements.progressTrack.setAttribute("aria-valuenow", String(progress));
+    elements.progressLabel.textContent = `${progress}%`;
+  }
+
+  function renderQuestion(animate = true) {
+    const question = questionData[state.current];
+    const dimension = dimensionMap[question.dimension];
+    const selectedOption = state.answers[state.current];
+
+    elements.questionNumber.textContent = padNumber(state.current + 1);
+    elements.dimensionLabel.textContent =
+      state.lang === "zh"
+        ? `${dimension.index} · ${dimension.zh}`
+        : `${dimension.index} · ${dimension.en}`;
+    elements.questionText.textContent = question[state.lang].prompt;
+    elements.optionList.innerHTML = "";
+
+    question[state.lang].options.forEach((optionText, optionIndex) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "option-button";
+      button.setAttribute("role", "radio");
+      button.setAttribute("aria-checked", String(selectedOption === optionIndex));
+      button.dataset.optionIndex = String(optionIndex);
+      button.innerHTML = `
+        <span class="option-letter">${String.fromCharCode(65 + optionIndex)}</span>
+        <span class="option-text"></span>
+        <span class="option-check" aria-hidden="true"></span>
+      `;
+      button.querySelector(".option-text").textContent = optionText;
+      button.addEventListener("click", () => selectOption(optionIndex));
+      if (selectedOption === optionIndex) {
+        button.classList.add("is-selected");
+      }
+      elements.optionList.appendChild(button);
+    });
+
+    elements.previousButton.disabled = state.current === 0;
+    updateProgress();
+
+    if (animate) {
+      elements.questionStage.classList.remove("is-entering");
+      void elements.questionStage.offsetWidth;
+      elements.questionStage.classList.add("is-entering");
+    }
+  }
+
+  function selectOption(optionIndex) {
+    if (state.transitioning || state.current >= TOTAL_QUESTIONS) {
+      return;
+    }
+
+    state.transitioning = true;
+    state.answers[state.current] = optionIndex;
+    const buttons = [...elements.optionList.querySelectorAll(".option-button")];
+    buttons.forEach((button, index) => {
+      const selected = index === optionIndex;
+      button.classList.toggle("is-selected", selected);
+      button.setAttribute("aria-checked", String(selected));
+      button.disabled = true;
+    });
+
+    window.setTimeout(() => {
+      if (state.current < TOTAL_QUESTIONS - 1) {
+        state.current += 1;
+        state.transitioning = false;
+        renderQuestion();
+      } else {
+        state.transitioning = false;
+        showResult();
+      }
+    }, 230);
+  }
+
+  function previousQuestion() {
+    if (state.transitioning || state.current === 0) {
+      return;
+    }
+    state.current -= 1;
+    renderQuestion();
+  }
+
+  function calculateResult() {
+    const rawScores = Object.fromEntries(dimensions.map((dimension) => [dimension.key, 0]));
+
+    questionData.forEach((question, index) => {
+      const answer = state.answers[index];
+      rawScores[question.dimension] += question.scores[answer] || 1;
+    });
+
+    const dimensionResults = dimensions.map((dimension) => {
+      const raw = rawScores[dimension.key];
+      return {
+        ...dimension,
+        raw,
+        percent: Math.round(((raw - 6) / 18) * 100),
+      };
+    });
+
+    const percentByKey = Object.fromEntries(
+      dimensionResults.map((dimension) => [dimension.key, dimension.percent]),
+    );
+
+    const offset =
+      (percentByKey.curiosity - 50) * -0.045 +
+      (percentByKey.emotional - 50) * 0.07 +
+      (percentByKey.adaptability - 50) * -0.04 +
+      (percentByKey.responsibility - 50) * 0.065 +
+      (percentByKey.selfAwareness - 50) * 0.08;
+
+    const mentalAge = clamp(Math.round(state.actualAge + offset), MIN_AGE, MAX_AGE);
+    const difference = mentalAge - state.actualAge;
+
+    state.result = {
+      mentalAge,
+      difference,
+      dimensions: dimensionResults,
+      sortedDimensions: [...dimensionResults].sort((a, b) => b.percent - a.percent),
+      band: getAgeBand(difference),
+    };
+
+    return state.result;
+  }
+
+  function getAgeBand(difference) {
+    if (difference <= -8) return "muchYounger";
+    if (difference <= -2) return "younger";
+    if (difference <= 1) return "aligned";
+    if (difference <= 7) return "older";
+    return "muchOlder";
+  }
+
+  function getDimensionLevel(percent) {
+    if (percent < 40) return "low";
+    if (percent < 70) return "mid";
+    return "high";
+  }
+
+  function agePosition(age) {
+    return clamp(((age - MIN_AGE) / (MAX_AGE - MIN_AGE)) * 100, 1.6, 98.4);
+  }
+
+  function renderSpectrum() {
+    const { mentalAge } = state.result;
+    elements.actualAgeValue.textContent = `${state.actualAge} ${t("yearsUnitShort")}`;
+    elements.mentalAgeValue.textContent = `${mentalAge} ${t("yearsUnitShort")}`;
+    elements.actualMarker.style.left = `${agePosition(state.actualAge)}%`;
+    elements.mentalMarker.style.left = `${agePosition(mentalAge)}%`;
+
+    const close = Math.abs(mentalAge - state.actualAge) < 5;
+    elements.actualMarker.style.setProperty("--dot-shift", close ? "-5px" : "0px");
+    elements.mentalMarker.style.setProperty("--dot-shift", close ? "5px" : "0px");
+    elements.actualMarker.style.setProperty("--caption-shift", "0px");
+    elements.mentalMarker.style.setProperty("--caption-shift", "0px");
+
+    elements.spectrumTicks.innerHTML = "";
+    [10, 20, 30, 40, 50, 60, 70, 80, 90].forEach((tick) => {
+      const label = document.createElement("span");
+      label.className = "spectrum-tick";
+      label.style.left = `${agePosition(tick)}%`;
+      label.textContent = String(tick);
+      elements.spectrumTicks.appendChild(label);
+    });
+  }
+
+  function renderDimensions() {
+    elements.dimensionGrid.innerHTML = "";
+
+    state.result.sortedDimensions.forEach((dimension, index) => {
+      const level = getDimensionLevel(dimension.percent);
+      const levelIndex = level === "low" ? 0 : level === "mid" ? 1 : 2;
+      const card = document.createElement("article");
+      card.className = "dimension-card";
+      card.setAttribute(
+        "aria-label",
+        format(t("dimensionAria"), {
+          name: dimension[state.lang],
+          score: dimension.percent,
+          level: dimension.levels[state.lang][levelIndex],
+        }),
+      );
+      card.innerHTML = `
+        <div class="dimension-card-top">
+          <span class="dimension-index">${padNumber(index + 1)} / ${dimension.index}</span>
+          <span class="dimension-score">${dimension.percent}<small>/100</small></span>
+        </div>
+        <h4></h4>
+        <span class="dimension-level"></span>
+        <p></p>
+        <div class="dimension-track" aria-hidden="true">
+          <span class="dimension-fill"></span>
+        </div>
+      `;
+      card.querySelector("h4").textContent = dimension[state.lang];
+      card.querySelector(".dimension-level").textContent =
+        dimension.levels[state.lang][levelIndex];
+      card.querySelector("p").textContent = dimension.descriptions[state.lang][level];
+      elements.dimensionGrid.appendChild(card);
+
+      window.requestAnimationFrame(() => {
+        window.setTimeout(() => {
+          card.querySelector(".dimension-fill").style.width = `${dimension.percent}%`;
+        }, 70 + index * 80);
+      });
+    });
+  }
+
+  function renderInsights() {
+    const topDimension = state.result.sortedDimensions[0];
+    const growingDimension = state.result.sortedDimensions[state.result.sortedDimensions.length - 1];
+    const band = ageBands[state.result.band][state.lang];
+
+    const insightContent = [
+      {
+        title: t("traitStrengthTitle"),
+        body: topDimension.strength[state.lang],
+      },
+      {
+        title: t("gentleEdgeTitle"),
+        body: growingDimension.growth[state.lang],
+      },
+      {
+        title: t("nextStepTitle"),
+        body: band.guidance,
+      },
+    ];
+
+    elements.insightGrid.innerHTML = "";
+    insightContent.forEach((insight, index) => {
+      const card = document.createElement("article");
+      card.className = "insight-card";
+      card.innerHTML = `
+        <span class="insight-number">${padNumber(index + 1)}</span>
+        <h4></h4>
+        <p></p>
+      `;
+      card.querySelector("h4").textContent = insight.title;
+      card.querySelector("p").textContent = insight.body;
+      elements.insightGrid.appendChild(card);
+    });
+  }
+
+  function buildShareCode() {
+    return [
+      "1",
+      state.actualAge,
+      state.lang,
+      state.answers.map((answer) => (answer === null ? 0 : answer)).join(""),
+    ].join(".");
+  }
+
+  function buildShareUrl() {
+    const url = new URL(window.location.href);
+    url.searchParams.set("r", buildShareCode());
+    url.hash = "";
+    return url.toString();
+  }
+
+  function renderShareLink() {
+    try {
+      const shareUrl = buildShareUrl();
+      elements.shareUrl.value = shareUrl;
+      replaceHistoryUrl(new URL(shareUrl));
+    } catch {
+      elements.shareUrl.value = "";
+    }
+  }
+
+  function renderResult() {
+    if (!state.result) {
+      calculateResult();
+    }
+
+    const { mentalAge, difference } = state.result;
+    const band = ageBands[state.result.band][state.lang];
+    const absoluteDifference = Math.abs(difference);
+
+    elements.mentalAgeNumber.textContent = String(mentalAge);
+    elements.archetypePill.textContent = band.archetype;
+    elements.differenceValue.textContent =
+      difference === 0
+        ? state.lang === "zh"
+          ? "0 岁"
+          : "0 yrs"
+        : `${difference > 0 ? "+" : "−"}${absoluteDifference} ${t("yearsUnitShort")}`;
+
+    if (difference === 0) {
+      elements.differenceDirection.textContent = t("sameAge");
+    } else if (difference > 0) {
+      elements.differenceDirection.textContent = format(t("stronger"), { n: absoluteDifference });
+    } else {
+      elements.differenceDirection.textContent = format(t("younger"), { n: absoluteDifference });
+    }
+
+    elements.resultSummary.textContent = format(band.summary, {
+      mental: state.lang === "zh" ? mentalAge : `${mentalAge} years old`,
+      gap: absoluteDifference,
+    });
+    elements.reflectionQuestion.textContent = band.reflection;
+
+    renderSpectrum();
+    renderDimensions();
+    renderInsights();
+    renderShareLink();
+  }
+
+  function showResult() {
+    calculateResult();
+    showView("result");
+    renderResult();
+  }
+
+  function restartTest() {
+    state.actualAge = null;
+    state.answers = Array(TOTAL_QUESTIONS).fill(null);
+    state.current = 0;
+    state.result = null;
+    state.transitioning = false;
+    elements.actualAge.value = "";
+    clearAgeError();
+    removeResultFromUrl();
+    showView("intro");
+    window.setTimeout(() => elements.actualAge.focus(), 80);
+  }
+
+  function exitTest() {
+    state.answers = Array(TOTAL_QUESTIONS).fill(null);
+    state.current = 0;
+    state.transitioning = false;
+    showView("intro");
+  }
+
+  let toastTimer = null;
+
+  function showToast(message) {
+    window.clearTimeout(toastTimer);
+    elements.toast.textContent = message;
+    elements.toast.classList.add("is-visible");
+    toastTimer = window.setTimeout(() => {
+      elements.toast.classList.remove("is-visible");
+    }, 2400);
+  }
+
+  function fallbackCopy(text) {
+    elements.shareUrl.focus();
+    elements.shareUrl.select();
+    elements.shareUrl.setSelectionRange(0, text.length);
+    let successful = false;
+    try {
+      successful = document.execCommand("copy");
+    } catch {
+      successful = false;
+    }
+    if (window.getSelection) {
+      window.getSelection().removeAllRanges();
+    }
+    return successful;
+  }
+
+  async function copyShareLink() {
+    const text = elements.shareUrl.value;
+    let successful = false;
+
+    if (navigator.clipboard && window.isSecureContext) {
+      try {
+        await navigator.clipboard.writeText(text);
+        successful = true;
+      } catch {
+        successful = false;
+      }
+    }
+
+    if (!successful) {
+      successful = fallbackCopy(text);
+    }
+
+    showToast(successful ? t("copied") : t("copyFailed"));
+  }
+
+  async function shareResult() {
+    const url = elements.shareUrl.value;
+    const title = format(t("shareTitle"), { age: `${state.result.mentalAge} ${t("yearsUnitShort")}` });
+    const text = format(t("shareText"), {
+      mental: `${state.result.mentalAge} ${t("yearsUnitShort")}`,
+      diff: Math.abs(state.result.difference),
+    });
+
+    if (typeof navigator.share === "function") {
+      try {
+        await navigator.share({ title, text, url });
+        return;
+      } catch (error) {
+        if (error && error.name === "AbortError") {
+          return;
+        }
+      }
+    }
+
+    await copyShareLink();
+  }
+
+  function restoreSharedResult() {
+    const params = new URLSearchParams(window.location.search);
+    const payload = params.get("r");
+    if (!payload) {
+      return false;
+    }
+
+    const match = payload.match(/^1\.(\d{1,2})\.(zh|en)\.([0-3]{30})$/);
+    if (!match) {
+      removeResultFromUrl();
+      return false;
+    }
+
+    const age = Number(match[1]);
+    if (age < MIN_AGE || age > MAX_AGE) {
+      removeResultFromUrl();
+      return false;
+    }
+
+    state.lang = match[2];
+    state.actualAge = age;
+    state.answers = match[3].split("").map((value) => Number(value));
+    state.current = TOTAL_QUESTIONS - 1;
+    elements.actualAge.value = String(age);
+    calculateResult();
+    showView("result");
+    renderResult();
+    return true;
+  }
+
+  function bindEvents() {
+    elements.startButton.addEventListener("click", startTest);
+    elements.exitButton.addEventListener("click", exitTest);
+    elements.previousButton.addEventListener("click", previousQuestion);
+    elements.restartButton.addEventListener("click", restartTest);
+    elements.copyButton.addEventListener("click", copyShareLink);
+    elements.shareButton.addEventListener("click", shareResult);
+    elements.brandHome.addEventListener("click", (event) => {
+      event.preventDefault();
+      if (state.view === "test") {
+        exitTest();
+      } else if (state.view === "result") {
+        restartTest();
+      }
+    });
+
+    elements.languageButtons.forEach((button) => {
+      button.addEventListener("click", () => setLanguage(button.dataset.lang));
+    });
+
+    elements.actualAge.addEventListener("input", clearAgeError);
+    elements.actualAge.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        startTest();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (state.view !== "test" || event.metaKey || event.ctrlKey || event.altKey) {
+        return;
+      }
+
+      if (event.key === "ArrowLeft") {
+        previousQuestion();
+        return;
+      }
+
+      const optionIndex = ["a", "b", "c", "d"].indexOf(event.key.toLowerCase());
+      if (optionIndex !== -1) {
+        selectOption(optionIndex);
+      }
+    });
+  }
+
+  function init() {
+    state.lang = readSavedLanguage();
+    renderStaticCopy();
+    bindEvents();
+    const restored = restoreSharedResult();
+    if (restored) {
+      renderStaticCopy();
+    }
+  }
+
+  init();
+})();
+
+</script>
+  </body>
+</html>
